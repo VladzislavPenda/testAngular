@@ -1,0 +1,38 @@
+
+<div class="lobby-container">
+    <p class="header-label text">Select players</p>
+    <div class="lobby-header-buttons">
+        <div class="form-group fg--search">
+            <input type="text" placeholder="Search" class="search-input">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="create-player-button-container">
+            <button class="create-button text">New player</button>
+        </div>
+    </div>
+    <div class="players-board">
+        <div *ngFor="let player of players" class="player-unit">
+            <div class="item player-name">
+                <p>{{player.name}}</p>
+            </div>
+            <div class="item player-mail">
+                <p>{{player.mail}}</p>
+            </div>
+            <div class="delete-icon-container">
+                <i class="fas fa-times"></i>
+            </div>
+            
+        </div>
+    </div>
+    <!-- <div>
+        <img src="../../common/files/close.png" alt="fff">
+    </div> -->
+    <app-choose-game></app-choose-game>
+    <div class="start-button-container">
+        <button class="start-button">Start</button>
+    </div>
+    
+    <!-- <div class="choosing-container">
+
+    </div> -->
+</div>
