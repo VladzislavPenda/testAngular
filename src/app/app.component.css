@@ -2,3 +2,11 @@
     background-color: #039be6;
     height: 80em;
 }
+
+.app-button{
+    height: 100%;
+    width: 100%;
+    background-color: #ffd727;
+    border: none;
+    border-radius: 3px;
+}

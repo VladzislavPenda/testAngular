@@ -23,7 +23,18 @@
     font-weight: bold;
 }
 
-.choose-game-label{
-    color: white;
-    font-family: Arial, sans-serif;
+.red {
+    color: red;
+}
+
+.game-item:hover{
+    background-color: lightgrey;
+}
+
+.game-item:active{
+    background-color: grey;
+}
+
+.active{
+    background-color: grey;
 }

@@ -1,0 +1,75 @@
+
+<div class="playing-zone">
+    <div class="dart-throwings-container">
+        <div class="text dart-number">dart 1</div>
+        <div class="text dart-number">dart 2</div>
+        <div class="text dart-number">dart 3</div>
+    </div>
+    
+    <div class="players-names" *ngFor="let item of gameUnits">
+        <div class="text">{{item.person.name}}</div>
+        <div class="input-radiobuttons-container">
+            <div class="bbb">
+                <input type="text" class="input-score">
+            </div>
+            
+            <div class="form_radio_group">
+                <div class="form_radio_group-item">
+                    <input id="radio-1{{item.person.name}}" type="radio" name="radio1{{item.person.name}}" value="1" checked>
+                    <label for="radio-1{{item.person.name}}">1x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-2{{item.person.name}}" type="radio" name="radio1{{item.person.name}}" value="2">
+                    <label for="radio-2{{item.person.name}}">2x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-3{{item.person.name}}" type="radio" name="radio1{{item.person.name}}" value="3">
+                    <label for="radio-3{{item.person.name}}">3x</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-radiobuttons-container">
+            <input type="text" class="input-score">
+            <div class="form_radio_group">
+                <div class="form_radio_group-item">
+                    <input id="radio-4{{item.person.name}}" type="radio" name="radio2{{item.person.name}}" value="1" checked>
+                    <label for="radio-4{{item.person.name}}">1x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-5{{item.person.name}}" type="radio" name="radio2{{item.person.name}}" value="2">
+                    <label for="radio-5{{item.person.name}}">2x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-6{{item.person.name}}" type="radio" name="radio2{{item.person.name}}" value="3">
+                    <label for="radio-6{{item.person.name}}">3x</label>
+                </div>
+            </div>
+        </div>
+        <div class="input-radiobuttons-container">
+            <input type="text" class="input-score">
+            <div class="form_radio_group">
+                <div class="form_radio_group-item">
+                    <input id="radio-7{{item.person.name}}" type="radio" name="radio3{{item.person.name}}" value="1" checked>
+                    <label for="radio-7{{item.person.name}}">1x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-8{{item.person.name}}" type="radio" name="radio3{{item.person.name}}" value="2">
+                    <label for="radio-8{{item.person.name}}">2x</label>
+                </div>
+                <div class="form_radio_group-item">
+                    <input id="radio-9{{item.person.name}}" type="radio" name="radio3{{item.person.name}}" value="3">
+                    <label for="radio-9{{item.person.name}}">3x</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- <div *ngFor="let item of fakeArray; index as i">
+        
+    </div> -->
+</div>
+<div class="add-score-button-container">
+    <button class="app-button">Add</button>
+</div>
+

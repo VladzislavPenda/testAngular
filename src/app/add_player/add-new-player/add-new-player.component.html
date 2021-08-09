@@ -1,0 +1,20 @@
+<div class="add-new-player-container">
+    <div class="logo">
+        <app-logo></app-logo>
+    </div>
+    <div class="input-players-info-container">
+        <p class="text header-text">Add a new player to start a game</p>
+        <div class="input-container">
+            <div class="text">Nickname {{player.name}}</div>
+            <input type="text" class="input-values" [(ngModel)]="player.name">
+        </div>
+        <div class="input-container">
+            <div class="text">e-mail</div>
+            <input type="text" class="input-values" [(ngModel)]="player.mail">
+        </div>
+        <div class="add-button-container">
+            <button class="app-button  button-text" (click)="addPlayer()">Add</button>
+        </div>
+
+    </div>
+</div>

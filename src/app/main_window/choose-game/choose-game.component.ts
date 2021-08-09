@@ -8,11 +8,18 @@ import { GamesService } from 'src/app/services/games/games.service';
 })
 export class ChooseGameComponent implements OnInit {
 
-  games: string[] = []
+  games: number[] = [];
+  selectedGame: number = 0;
+
   constructor(private gamesService: GamesService) { }
 
   ngOnInit(): void {
     this.games = this.gamesService.getGames();
+  }
+
+  selectGame(gameName: number): void{
+    this.gamesService.SelectGame(gameName);
+    this.selectedGame = this.gamesService.selectedGame;
   }
 
 }
