@@ -12,6 +12,10 @@
 }
 
 
+.game-interface-container{
+    border-bottom: solid 1px lightskyblue;
+}
+
 .dart-throwings-container{
     margin-top: 8px;
 }
@@ -87,9 +91,12 @@
 	color: #666;
 }
 
+
+
 .add-score-button-container{
-    width: 50%;
+    width: 40%;
     height: 40px;
     margin:auto;
+    /* border-bottom: solid 1px lightskyblue; */
     padding: 3em 0;
 }

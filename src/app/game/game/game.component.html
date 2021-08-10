@@ -2,12 +2,17 @@
     <div class="game-header">
         <app-logo></app-logo>
         <button class="app-button new-game-button">New game</button>
-        
-    </div>
-    <div class="throwing-darts-container">
-        <app-throwing-darts [gameUnits]="gameUnits"></app-throwing-darts>
-    </div>
-    <div class="dashboard">
 
     </div>
+    <div class="throwing-darts-container">
+        <app-throwing-darts [gameUnits]="gameUnits" [gameData]="gameData"></app-throwing-darts>
+    </div>
+    <div class="dashboard">
+        <!-- <div *ngFor="let item of gameUnits">
+            {{item.points}}
+        </div> -->
+        <!-- <button (click)="countPoints()"></button> -->
+        <app-dashboard [gameUnits]="gameUnits"></app-dashboard>
+    </div>
 </div>
+

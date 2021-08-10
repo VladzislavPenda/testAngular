@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GameUnit } from 'src/app/common/gameItem';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @Input() gameUnits: GameUnit[] = []
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  countPoints(): void {
+    this.gameUnits[0].points = 40;
   }
 
 }

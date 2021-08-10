@@ -3,6 +3,7 @@ import { GameUnit } from 'src/app/common/gameItem';
 import { Player } from 'src/app/common/player';
 import { PlayersService } from '../players/players.service';
 import { OnInit } from '@angular/core';
+import { GameData } from 'src/app/common/gameData';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { OnInit } from '@angular/core';
 export class ScoreCounterService implements OnInit{
 
   gameUnits: GameUnit[] = []
+  gameData: GameData[] = []
   constructor(private playerService: PlayersService) { }
 
   ngOnInit(): void {
@@ -32,5 +34,9 @@ export class ScoreCounterService implements OnInit{
       const gameUnit: GameUnit = {person: element, points: 501};
       this.gameUnits.push(gameUnit);
     });
+  }
+
+  getData(): void{
+    return
   }
 }

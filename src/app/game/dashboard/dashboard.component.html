@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <div class="players-name-container">
+        <div *ngFor="let item of gameUnits" >
+            <div>
+                {{item.person.name}}
+                {{item.points}}
+                <!-- <button (click)="countPoints()"></button> -->
+            </div>
+        </div>
+    </div>
+</div>
