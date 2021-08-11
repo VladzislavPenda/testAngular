@@ -42,7 +42,7 @@ export class ThrowingDartsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.dir(this.gameUnits)
     // this.gameUnits = this.scoreCounter.gameUnits
   }
 

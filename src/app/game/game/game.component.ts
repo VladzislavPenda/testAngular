@@ -18,12 +18,13 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.playerService.players.forEach(element => {
-      console.log(element)
       const gameUnit: GameUnit = {person: element, points: 501};
       const gameDataElement: GameData = {receivedPoints: [0, 0, 0]}
       this.gameUnits.push(gameUnit);
       this.gameData.push(gameDataElement);
+
     });
+    console.dir(this.gameUnits)
   }
 
   countPoints(): void {

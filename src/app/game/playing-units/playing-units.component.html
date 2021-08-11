@@ -1,0 +1,69 @@
+
+  <div class="players-container">
+    <div *ngFor="let item of gameUnits; let j=index" >
+    <div class="text">{{item.person.name}}</div>
+      <app-unit [playerName]="item.person.name"></app-unit>
+   </div>
+  </div>
+
+
+
+<!--
+<div class="text">{{playerName}}</div>
+<div class="input-radiobuttons-container" [formGroup]="formBuilder">
+  <div class="bbb">
+    <input type="text" class="input-score" formControlName="points[0]" >
+  </div>
+  <div class="form_radio_group">
+    <div class="form_radio_group-item">
+        <input id="radio-1{{playerName}}" type="radio" name="radio1{{playerName}}"  value="1" checked>
+        <label for="radio-1{{playerName}}">1x</label>
+    </div>
+    <div class="form_radio_group-item">
+        <input id="radio-2{{playerName}}" type="radio" name="radio1{{playerName}}"  value="2">
+        <label for="radio-2{{playerName}}">2x</label>
+    </div>
+    <div class="form_radio_group-item">
+        <input id="radio-3{{playerName}}" type="radio" name="radio1{{playerName}}"  value="3">
+        <label for="radio-3{{playerName}}">3x</label>
+    </div>
+  </div>
+</div>
+<div class="input-radiobuttons-container">
+  <input type="text" class="input-score" [(ngModel)]="points[1]">
+  <div class="form_radio_group">
+      <div class="form_radio_group-item">
+          <input id="radio-4{{playerName}}" type="radio" name="radio2{{playerName}}"  value="1" checked>
+          <label for="radio-4{{playerName}}">1x</label>
+      </div>
+      <div class="form_radio_group-item">
+          <input id="radio-5{{playerName}}" type="radio" name="radio2{{playerName}}"  value="2">
+          <label for="radio-5{{playerName}}">2x</label>
+      </div>
+      <div class="form_radio_group-item">
+          <input id="radio-6{{playerName}}" type="radio" name="radio2{{playerName}}"  value="3">
+          <label for="radio-6{{playerName}}">3x</label>
+      </div>
+  </div>
+</div>
+<div class="input-radiobuttons-container">
+  <input type="text" class="input-score" [(ngModel)]="points[2]">
+  <div class="form_radio_group">
+      <div class="form_radio_group-item">
+          <input id="radio-7{{playerName}}" type="radio" name="radio3{{playerName}}"  value="1" checked>
+          <label for="radio-7{{playerName}}">1x</label>
+      </div>
+      <div class="form_radio_group-item">
+          <input id="radio-8{{playerName}}" type="radio" name="radio3{{playerName}}"  value="2">
+          <label for="radio-8{{playerName}}">2x</label>
+      </div>
+      <div class="form_radio_group-item">
+          <input id="radio-9{{playerName}}" type="radio" name="radio3{{playerName}}"  value="3">
+          <label for="radio-9{{playerName}}">3x</label>
+      </div>
+  </div>
+</div>
+
+
+ -->
+

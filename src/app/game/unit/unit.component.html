@@ -1,0 +1,18 @@
+<form action="" [formGroup]="profileBuilder">
+<div formArrayName="throwings">
+  <div class="input-radiobuttons-container" *ngFor="let item2 of throwings.controls; let i=index" [formGroupName]="i">
+    <div>
+       <input type="text" class="input-score" formControlName="points">
+    </div>
+    <div class="form_radio_group">
+       <div class="form_radio_group-item" *ngFor="let item of throwings.controls; let j=index">
+           <input id="radio-{{j*5 + i*13}}{{playerName}}" type="radio" name="multiplier" formControlName="multiplier" (change)="handleChange($event)" value="{{j}}" checked>
+          <label for="radio-{{j*5 + i*13}}{{playerName}}">{{j+1}}x</label>
+      </div>
+    </div>
+   </div>
+</div>
+</form>
+
+<!-- radio{{i}}{{playerName}} -->
+
