@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GameUnit } from 'src/app/common/gameItem';
+import { GameUnit } from 'src/app/common/gameUnit';
 
 @Component({
   selector: 'app-playing-units',
@@ -13,6 +13,10 @@ export class PlayingUnitsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  count(): void{
+    console.log("Ky")
   }
 
 }

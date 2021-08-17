@@ -6,13 +6,19 @@
           <div class="text dart-number">dart 3</div>
       </div>
       <div class="playing-units-container">
-        <app-playing-units [gameUnits]="gameUnits"></app-playing-units>
+        <!-- <app-playing-units [gameUnits]="gameUnits"></app-playing-units> -->
+        <form action="" [formGroup]="form">
+          <app-unit [gameUnits]="gameUnits"></app-unit>
+        </form>
+        <!-- <app-unit [gameUnits]="gameUnits"></app-unit> -->
       </div>
   </div>
   <div class="add-score-button-container">
       <button class="app-button add-button" (click)="countPoints()">Add</button>
   </div>
 </div>
+
+<!-- {{ playingUnitsForm | json }} -->
 
 
 

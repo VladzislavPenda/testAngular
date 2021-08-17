@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
-import { GameUnit } from 'src/app/common/gameItem';
+import { Component, Input, OnInit, Type } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, RequiredValidator } from '@angular/forms';
+import { GameData } from 'src/app/common/gameData';
+import { GameUnit } from 'src/app/common/gameUnit';
+import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
   selector: 'app-unit',
@@ -9,45 +11,92 @@ import { GameUnit } from 'src/app/common/gameItem';
 })
 export class UnitComponent implements OnInit {
 
+  @Input() playerName?: string;
+  @Input() gameUnits: GameUnit[] = [];
+  // public form2: FormGroup;
 
-  // @Input() gameUnit?: GameUnit
-  @Input() playerName?: string
-  fakeArray = new Array(3)
-  profileBuilder = this.fb.group({
-    throwings: this.fb.array([
+  public throwingArrayInit = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
+
+  // public form = this.fb.group({
+  //   playingUnits: this.fb.array([
+  //     this.fb.group({
+  //       name: ['first'],
+  //       throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
+  //     })
+  //   ])
+  // });
+  form = this.fb.group({
+    playingUnits: this.fb.array([
       this.fb.group({
-        points: [''],
-        multiplier: ['']
+        name: ['first'],
+        throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
       })
     ])
   });
 
-  constructor(private fb: FormBuilder) { }
+  // form2 = this.fb.group({
+  //   playingUnits: this.fb.array([
+  //     this.fb.group({
+  //       name: [''],
+  //       throwings2: this.fb.array([
+  //         this.fb.group({
+  //           points: [''],
+  //           multiplier: ['']
+  //         })
+  //       ])
+  //     })
+  //   ])
+  // });
+  constructor(private fb: FormBuilder, private counterService: ScoreCounterService) { }
 
   ngOnInit(): void {
-    this.throwings.push(this.fb.group({
-      points: [''],
-      multiplier: ['']
-    }))
-    this.throwings.push(this.fb.group({
-      points: [''],
-      multiplier: ['']
-    }))
+    // let throwingArray = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
+    let fakeArr = new Array(3)
+    // this.form2 = this.fb.group({
+    //   playingUnits: this.fb.group({
+    //     name: "fff",
+    //     throwings2: this.fb.array(throwingArray.map(_ => this.fb.group({points: 0, multiplier: 1})))
+    //   })
+    // })
 
-    console.log(this.playerName)
+
+
+    this.playingUnits.push(this.fb.group({
+      name: "second",
+      throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
+    }));
+    this.playingUnits.push(this.fb.group({
+      name: "third",
+      throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
+    }));
+
+    // console.log(throwingArray);
+    console.log(this.form);
+    console.log(this.gameUnits);
+    // this.throwings2.push(this.fb.group({
+    //   points: [''],
+    //   multiplier: ['']
+    // }))
+    // this.throwings2.push(this.fb.group({
+    //   points: [''],
+    //   multiplier: ['']
+    // }))
   }
 
-  handleChange(event: any): void{
-    console.dir(event?.target.value)
-    console.dir(event.target.name)
-    console.dir(this.profileBuilder)
-    console.dir(this.profileBuilder.controls)
-    this.profileBuilder.patchValue({points: 10 * event.target.value})
-    console.log(this.profileBuilder)
+  count(multiplier: number)
+  {
   }
 
-  get throwings() {
-    return this.profileBuilder.get('throwings') as FormArray;
+  public getArr(index: number) {
+    return (this.form.get(`playingUnits.${index}.throwings`) as FormArray).controls;
+  }
+
+  private get throwings() {
+    return this.form.get('throwings') as FormArray;
+  }
+
+  private get playingUnits(){
+    return this.form.get('playingUnits') as FormArray;
   }
 
 }

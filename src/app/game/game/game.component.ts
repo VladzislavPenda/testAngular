@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { GameUnit } from 'src/app/common/gameItem';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GameUnit } from 'src/app/common/gameUnit';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { Player } from 'src/app/common/player';
 import { GameData } from 'src/app/common/gameData';
+import { UnitComponent } from '../unit/unit.component';
 
 @Component({
   selector: 'app-game',
@@ -12,23 +13,25 @@ import { GameData } from 'src/app/common/gameData';
 export class GameComponent implements OnInit {
 
   gameUnits: GameUnit[] = [];
-  gameData: GameData[] = []
+  gameData: GameData[] = [];
+
 
   constructor(private playerService: PlayersService) { }
 
   ngOnInit(): void {
     this.playerService.players.forEach(element => {
       const gameUnit: GameUnit = {person: element, points: 501};
-      const gameDataElement: GameData = {receivedPoints: [0, 0, 0]}
+      // const gameDataElement: GameData = {receivedPoints: [0, 0, 0]}
       this.gameUnits.push(gameUnit);
-      this.gameData.push(gameDataElement);
+      // this.gameData.push(gameDataElement);
 
     });
-    console.dir(this.gameUnits)
+    // console.dir(this.gameUnits)
   }
 
   countPoints(): void {
     this.gameUnits[0].points = 40;
+
   }
 
 }

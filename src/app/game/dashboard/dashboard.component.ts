@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GameUnit } from 'src/app/common/gameItem';
+import { GameUnit } from 'src/app/common/gameUnit';
 
 @Component({
   selector: 'app-dashboard',

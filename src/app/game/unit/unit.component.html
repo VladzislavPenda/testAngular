@@ -1,18 +1,30 @@
-<form action="" [formGroup]="profileBuilder">
-<div formArrayName="throwings">
-  <div class="input-radiobuttons-container" *ngFor="let item2 of throwings.controls; let i=index" [formGroupName]="i">
-    <div>
-       <input type="text" class="input-score" formControlName="points">
+<form action="" [formGroup]="form">
+  <div formArrayName="playingUnits">
+    <div *ngFor="let item of gameUnits; let j=index" [formGroupName]="j">
+      <div class="text">{{item.person.name}}</div>
+
+        <div formArrayName="throwings">
+          <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
+            <div>
+               <input type="number" class="input-score" formControlName="points">
+            </div>
+            <div class="form_radio_group">
+              <div class="form_radio_group-item">
+                <input id="radio1_{{i}}{{item.person.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
+                <label for="radio1_{{i}}{{item.person.name}}">1x</label>
+              </div>
+              <div class="form_radio_group-item">
+                <input id="radio2_{{i}}{{item.person.name}}" type="radio" [value]="2" formControlName="multiplier" >
+                <label for="radio2_{{i}}{{item.person.name}}">2x</label>
+              </div>
+              <div class="form_radio_group-item">
+                <input id="radio3_{{i}}{{item.person.name}}" type="radio" [value]="3" formControlName="multiplier" >
+                <label for="radio3_{{i}}{{item.person.name}}">3x</label>
+              </div>
+            </div>
+           </div>
+        </div>
+        {{form.value | json}}
     </div>
-    <div class="form_radio_group">
-       <div class="form_radio_group-item" *ngFor="let item of throwings.controls; let j=index">
-           <input id="radio-{{j*5 + i*13}}{{playerName}}" type="radio" name="multiplier" formControlName="multiplier" (change)="handleChange($event)" value="{{j}}" checked>
-          <label for="radio-{{j*5 + i*13}}{{playerName}}">{{j+1}}x</label>
-      </div>
-    </div>
-   </div>
-</div>
+  </div>
 </form>
-
-<!-- radio{{i}}{{playerName}} -->
-
