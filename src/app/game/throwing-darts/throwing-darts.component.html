@@ -31,7 +31,6 @@
                   </div>
                 </div>
               </div>
-              <!-- {{form.value | json}} -->
           </div>
         </div>
       </div>
@@ -40,19 +39,10 @@
       <button type="submit" class="app-button add-button">Add</button>
     </div>
     <div *ngIf="submitted && form.status=='INVALID'" class="error-message">
-      <span>Plese enter the data correctly (points cannot be less than 0 and more than 20)</span>
+      <span>Plese enter the data correctly(points cannot be less than 0 and more than 20)</span>
     </div>
   </div>
 </form>
-<!-- <form action="" [formGroup]="newForm" (ngSubmit)="click()">
-  <div>
-    <app-points-custom-input formControlName="name"></app-points-custom-input>
-    <div *ngIf="submitted && newForm.status=='INVALID'">
-      wrong
-    </div>
-    <button type="submit">submit</button>
-  </div>
-</form> -->
 
 
 

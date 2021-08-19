@@ -11,8 +11,7 @@ import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/fo
 import { GameComponent } from './game/game/game.component';
 import { ThrowingDartsComponent } from './game/throwing-darts/throwing-darts.component';
 import { DashboardComponent } from './game/dashboard/dashboard.component';
-import { PlayingUnitsComponent } from './game/playing-units/playing-units.component';
-import { UnitComponent } from './game/unit/unit.component';
+
 import { PointsCustomInputComponent } from './game/points-custom-input/points-custom-input.component';
 
 @NgModule({
@@ -25,8 +24,6 @@ import { PointsCustomInputComponent } from './game/points-custom-input/points-cu
     GameComponent,
     ThrowingDartsComponent,
     DashboardComponent,
-    PlayingUnitsComponent,
-    UnitComponent,
     PointsCustomInputComponent
   ],
   imports: [
