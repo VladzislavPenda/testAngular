@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GameHistory } from 'src/app/common/gameHistory';
+import { PlayerInfo } from 'src/app/common/playerInfo';
+import { PlayersService } from 'src/app/services/players/players.service';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
+  public gameHistory?: Observable<GameHistory>
 
-  // @Input() public gameUnits: GameUnit[] = [];
-  public gameHistory?: GameHistory;
-
-  constructor(private counterService: ScoreCounterService) {}
+  constructor(private counterService: ScoreCounterService, private playersService: PlayersService) {}
 
   ngOnInit(): void {
     console.log("dash init");
-    this.gameHistory = this.counterService.getHistory();
+    this.gameHistory = this.counterService.gameHistory;
   }
 
-  countPoints(): void {
-    // this.gameUnits[0].points = 40;
+  getPlayers(): PlayerInfo[]{
+    return this.playersService.players;
   }
 
   get moveNumber(): number{
@@ -29,10 +31,5 @@ export class DashboardComponent implements OnInit {
 
   get WinnerId(): number | undefined{
     return this.counterService.getWinnerId();
-  }
-
-  get history(): GameHistory {
-    // console.log(this.counterService.gameHistory)
-    return this.counterService.getHistory();
   }
 }

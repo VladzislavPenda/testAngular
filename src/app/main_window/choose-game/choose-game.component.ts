@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games/games.service';
 
 @Component({
   selector: 'app-choose-game',
   templateUrl: './choose-game.component.html',
-  styleUrls: ['./choose-game.component.css']
+  styleUrls: ['./choose-game.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChooseGameComponent implements OnInit, OnDestroy {
 

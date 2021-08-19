@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { PlayersService } from 'src/app/services/players/players.service';
@@ -7,7 +7,8 @@ import { PlayerInfo } from 'src/app/common/playerInfo';
 @Component({
   selector: 'app-throwing-darts',
   templateUrl: './throwing-darts.component.html',
-  styleUrls: ['./throwing-darts.component.css']
+  styleUrls: ['./throwing-darts.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThrowingDartsComponent implements OnInit, OnDestroy {
   public form: FormGroup;
