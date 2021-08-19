@@ -1,0 +1,24 @@
+.logo-container{
+    width: 200px;
+    height: 100px;
+}
+
+.first-logo-string{
+    font-family:sans-serif;
+    width: 100%;
+    font-size: 17.5px;
+    font-weight: 100;
+    margin-bottom: -10px;
+}
+
+.second-logo-string{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.signature{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    margin-left: 25px;
+}

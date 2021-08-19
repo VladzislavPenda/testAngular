@@ -1,0 +1,19 @@
+.game-container{
+    width: 1000px;
+    margin: auto;
+    padding-top: 5em;
+}
+
+.game-header{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid 1px lightskyblue;
+}
+
+.new-game-button{
+    margin-top: 10px;
+    width: 120px;
+    height: 35px;
+}
+
+

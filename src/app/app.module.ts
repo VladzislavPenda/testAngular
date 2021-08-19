@@ -5,16 +5,32 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './main_window/lobby/lobby.component';
 import { ChooseGameComponent } from './main_window/choose-game/choose-game.component';
+import { AddNewPlayerComponent } from './add_player/add-new-player/add-new-player.component';
+import { LogoComponent } from './logo/logo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GameComponent } from './game/game/game.component';
+import { ThrowingDartsComponent } from './game/throwing-darts/throwing-darts.component';
+import { DashboardComponent } from './game/dashboard/dashboard.component';
+
+import { PointsCustomInputComponent } from './game/points-custom-input/points-custom-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LobbyComponent,
-    ChooseGameComponent
+    ChooseGameComponent,
+    AddNewPlayerComponent,
+    LogoComponent,
+    GameComponent,
+    ThrowingDartsComponent,
+    DashboardComponent,
+    PointsCustomInputComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

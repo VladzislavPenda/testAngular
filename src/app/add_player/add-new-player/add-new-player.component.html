@@ -1,0 +1,41 @@
+<div class="add-new-player-container">
+    <div class="logo">
+        <app-logo></app-logo>
+    </div>
+    <form action=""  [formGroup]="form" (ngSubmit)="addPlayer()">
+      <div class="input-players-info-container">
+        <p class="text header-text">Add a new player to start a game</p>
+        <div class="input-container">
+            <div class="text">Nickname</div>
+            <div *ngIf="submitted">
+              <div *ngIf="this.form.controls.name.errors?.required">
+                <span class="error-message">This field is required.</span>
+              </div>
+              <div *ngIf="this.form.controls.name.errors?.minlength">
+                <span class="error-message">Length must be at least 6.</span>
+              </div>
+              <div *ngIf="this.form.controls.name.errors?.maxlength">
+                <span class="error-message">Length must be less than 15.</span>
+              </div>
+            </div>
+            <input type="text" class="input-values" formControlName="name">
+        </div>
+        <div class="input-container">
+            <div class="text">E-mail</div>
+            <div *ngIf="submitted">
+              <div *ngIf="this.form.controls.mail.errors?.required">
+                <span class="error-message">This field is required.</span>
+              </div>
+              <div *ngIf="this.form.controls.mail.errors?.email">
+                <span class="error-message">This field is incorrect.</span>
+              </div>
+
+            </div>
+            <input type="text" class="input-values" formControlName="mail">
+        </div>
+        <div class="add-button-container">
+            <button class="app-button  button-text" type="submit">Add</button>
+        </div>
+    </div>
+    </form>
+</div>

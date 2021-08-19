@@ -1,0 +1,43 @@
+/* host doesn't work
+/* :host{
+  width: 300px;
+  margin: auto;
+  padding-top: 10em;
+} */
+
+.add-new-player-container{
+    width: 300px;
+    margin: auto;
+    padding-top: 10em;
+}
+
+.logo{
+  width: 50%;
+  margin: auto;
+}
+
+.header-text{
+  width: 80%;
+  margin: auto;
+}
+
+.input-container{
+  margin: 35px 0px;
+}
+
+.input-values{
+  border: none;
+  border-radius: 5px;
+  width: 296px;
+  padding-left: 10px;
+  font-size: 20px;
+  color: grey;
+  height: 35px;
+  margin-top: 5px;
+}
+
+.add-button-container{
+  margin-top: 60px;
+  height: 35px;
+}
+

@@ -1,0 +1,130 @@
+.players-names{
+  width: 200px;
+}
+
+.playing-zone{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
+.playing-units-container{
+  display: flex;
+  width: 90%;
+    justify-content: center;
+}
+
+.game-interface-container{
+  border-bottom: solid 1px lightskyblue;
+}
+
+.dart-throwings-container{
+  margin-top: 8px;
+}
+.dart-number{
+  margin-top: 40px;
+}
+
+.add-score-button-container{
+  width: 40%;
+  height: 40px;
+  margin:auto;
+  padding: 3em 0;
+}
+
+.input-radiobuttons-container{
+  display: flex;
+}
+
+.input-score{
+  width: 60px;
+  height: 32.5px;
+  margin-top: 20px;
+}
+
+.input-radiobuttons-container{
+  display: flex;
+}
+
+.form_radio_group {
+  padding-top: 20px;
+  display: flex;
+  overflow: hidden;
+}
+
+.form_radio_group-item {
+  display: inline-block;
+}
+
+.form_radio_group input[type=radio] {
+  display: none;
+}
+
+.form_radio_group label {
+  display: inline-block;
+  cursor: pointer;
+  height: 34px;
+  width: 25px;
+  padding-left: 5px;
+  line-height: 34px;
+  border: 2px solid #4c505e;
+  background-color: white;
+  border-right: none;
+  user-select: none;
+}
+
+
+.form_radio_group .form_radio_group-item:last-child label {
+  border-radius: 0 11px 11px 0;
+  border-right: 2px solid rgb(46, 45, 45);
+}
+
+.last{
+  border-radius: 0 11px 11px 0;
+  border-right: 5px solid rgb(46, 45, 45);
+}
+
+.span{
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+/* Checked */
+.form_radio_group .form_radio_group-item input[type=radio]:checked + label {
+  background: #4c505e;
+  color: white;
+}
+
+.form_radio_group label input:checked + span {
+  background: #4c505e;
+  color: white;
+}
+
+/* Hover */
+.form_radio_group label:hover {
+  color: #666;
+}
+
+/* Disabled */
+.form_radio_group input[type=radio]:disabled + label {
+  background: #efefef;
+  color: #666;
+}
+
+.playing-units{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.unit{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.add-score-button-container + div{
+  margin: auto;
+  text-align: center;
+  padding-bottom: 10px;
+}

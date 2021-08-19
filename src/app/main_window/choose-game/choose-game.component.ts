@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games/games.service';
 
 @Component({
@@ -6,13 +6,22 @@ import { GamesService } from 'src/app/services/games/games.service';
   templateUrl: './choose-game.component.html',
   styleUrls: ['./choose-game.component.css']
 })
-export class ChooseGameComponent implements OnInit {
+export class ChooseGameComponent implements OnInit, OnDestroy {
 
-  games: string[] = []
+  public games: number[] = [];
+  public selectedGame: number = 0;
+
   constructor(private gamesService: GamesService) { }
 
   ngOnInit(): void {
     this.games = this.gamesService.getGames();
   }
 
+  selectGame(gameName: number): void{
+    this.gamesService.SelectGame(gameName);
+    this.selectedGame = this.gamesService.selectedGame;
+  }
+
+  ngOnDestroy(){
+  }
 }

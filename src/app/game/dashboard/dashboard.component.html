@@ -1,0 +1,32 @@
+<div class="move-counter-container">
+  <div *ngFor="let item of history.moves; index as i">
+    <div class="move-number">
+      <span *ngIf="i != history.moves.length - 1" class="text">
+        {{moveNumber - i}}
+      </span>
+    </div>
+  </div>
+
+</div>
+<div class="dashboard-info-container">
+  <div class="players-name-container">
+    <div *ngFor="let item of history.moves[0].players; index as i" >
+      <div class="name-container text">
+        {{item.person}}
+        <ng-container *ngIf="WinnerId == i">
+          +
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let moves of history.moves; index as i" class="">
+    <div class="one-move-row-container">
+      <div *ngFor="let unit of moves.players">
+        <div class="">
+          {{unit.points}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

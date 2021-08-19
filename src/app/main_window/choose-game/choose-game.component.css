@@ -1,29 +1,39 @@
 .games{
-    display: flex;
+  display: flex;
 }
 
 .games-choosing-container{
-    margin: 60px 0px;
+  margin: 60px 0px;
 }
 
 .game-item{
-    width: 20%;
-    height: 100px;
-    background-color: white;
-    border-radius: 100%;
-    margin-right: 20px;
+  width: 20%;
+  height: 100px;
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 20px;
 }
 
-.game-name {
-    width: auto;
-    height: auto;
-    margin-left: 30px;
-    /* margin-top: -20px; */
-    font-size: 30px;
-    font-weight: bold;
+.game-name{
+  width: auto;
+  height: auto;
+  margin-left: 30px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
-.choose-game-label{
-    color: white;
-    font-family: Arial, sans-serif;
+.set-color{
+  color: rgb(216, 56, 149);
+}
+
+.game-item:hover{
+  background-color: lightgrey;
+}
+
+.game-item:active{
+  background-color: grey;
+}
+
+.active{
+  background-color: grey;
 }

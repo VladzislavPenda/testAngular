@@ -1,5 +1,5 @@
-export const GAMES: string[] = [
-    "501", 
-    "301"
+export const GAMES: number[] = [
+    501, 
+    301
 ]
 

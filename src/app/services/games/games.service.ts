@@ -1,14 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { GAMES } from 'src/app/common/mock-games';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GamesService {
+export class GamesService{
 
+  public selectedGame: number = 0;
   constructor() { }
 
   getGames() {
-    return GAMES
+    return GAMES;
+  }
+
+  SelectGame(gameName: number){
+    this.selectedGame=gameName;
   }
 }
