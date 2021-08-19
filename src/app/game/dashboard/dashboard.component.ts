@@ -10,7 +10,7 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
 })
 export class DashboardComponent implements OnInit {
 
-  @Input() gameUnits: GameUnit[] = [];
+  // @Input() public gameUnits: GameUnit[] = [];
   public gameHistory?: GameHistory;
 
   constructor(private counterService: ScoreCounterService) {}
@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   }
 
   countPoints(): void {
-    this.gameUnits[0].points = 40;
+    // this.gameUnits[0].points = 40;
   }
 
   get moveNumber(): number{
@@ -34,6 +34,6 @@ export class DashboardComponent implements OnInit {
 
   get history(): GameHistory {
     // console.log(this.counterService.gameHistory)
-    return this.counterService.gameHistory;
+    return this.counterService.getHistory();
   }
 }

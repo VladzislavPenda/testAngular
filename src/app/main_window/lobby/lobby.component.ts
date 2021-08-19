@@ -11,8 +11,7 @@ import { ChooseGameComponent } from '../choose-game/choose-game.component';
   styleUrls: ['./lobby.component.css']
 })
 export class LobbyComponent implements OnInit, OnDestroy {
-  players: Player[] = [];
-  // choosedGame: string ='';
+  public players: Player[] = [];
 
   constructor(private playerService: PlayersService, private router: Router, private scoreCounter: ScoreCounterService) { }
 
@@ -29,10 +28,6 @@ export class LobbyComponent implements OnInit, OnDestroy {
     this.playerService.removePlayer(index);
   }
 
-  // choosingGame(){
-
-  // }
-
   startGame(): void{
     const navigationParams: string[] = ['/game'];
     this.router.navigate(navigationParams);
@@ -40,6 +35,5 @@ export class LobbyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    console.log("lobby destroyed");
   }
 }

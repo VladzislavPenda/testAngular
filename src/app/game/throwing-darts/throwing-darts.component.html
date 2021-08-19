@@ -8,8 +8,8 @@
       </div>
       <div class="playing-units-container">
         <div formArrayName="playingUnits" class="playing-units">
-          <div *ngFor="let item of gameUnits; let j=index" [formGroupName]="j" class="unit">
-            <div class="text">{{item.person}}</div>
+          <div *ngFor="let item of players(); let j=index" [formGroupName]="j" class="unit">
+            <div class="text">{{item.name}}</div>
               <div formArrayName="throwings">
                 <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
                   <div>
@@ -17,16 +17,16 @@
                   </div>
                   <div class="form_radio_group">
                     <div class="form_radio_group-item">
-                      <input id="radio1_{{i}}{{item.person}}" type="radio" [value]="1" formControlName="multiplier" checked>
-                      <label for="radio1_{{i}}{{item.person}}">1x</label>
+                      <input id="radio1_{{i}}{{item.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
+                      <label for="radio1_{{i}}{{item.name}}">1x</label>
                     </div>
                     <div class="form_radio_group-item">
-                      <input id="radio2_{{i}}{{item.person}}" type="radio" [value]="2" formControlName="multiplier" >
-                      <label for="radio2_{{i}}{{item.person}}">2x</label>
+                      <input id="radio2_{{i}}{{item.name}}" type="radio" [value]="2" formControlName="multiplier" >
+                      <label for="radio2_{{i}}{{item.name}}">2x</label>
                     </div>
                     <div class="form_radio_group-item">
-                      <input id="radio3_{{i}}{{item.person}}" type="radio" [value]="3" formControlName="multiplier" >
-                      <label for="radio3_{{i}}{{item.person}}">3x</label>
+                      <input id="radio3_{{i}}{{item.name}}" type="radio" [value]="3" formControlName="multiplier" >
+                      <label for="radio3_{{i}}{{item.name}}">3x</label>
                     </div>
                   </div>
                 </div>

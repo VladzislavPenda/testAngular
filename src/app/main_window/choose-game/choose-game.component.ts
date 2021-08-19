@@ -8,8 +8,8 @@ import { GamesService } from 'src/app/services/games/games.service';
 })
 export class ChooseGameComponent implements OnInit, OnDestroy {
 
-  games: number[] = [];
-  selectedGame: number = 0;
+  public games: number[] = [];
+  public selectedGame: number = 0;
 
   constructor(private gamesService: GamesService) { }
 
@@ -23,6 +23,5 @@ export class ChooseGameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    console.log("choose game destroyed");
   }
 }

@@ -40,7 +40,7 @@ export class PointsCustomInputComponent implements OnInit, ControlValueAccessor,
   }
 
   down() {
-    this.value-- ;
+    this.value--;
   }
 
   writeValue(value: any) {
@@ -71,6 +71,5 @@ export class PointsCustomInputComponent implements OnInit, ControlValueAccessor,
   }
 
   ngOnDestroy(){
-    console.log("points validator destroyed")
   }
 }

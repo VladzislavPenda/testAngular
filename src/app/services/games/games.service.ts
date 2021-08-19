@@ -6,7 +6,7 @@ import { GAMES } from 'src/app/common/mock-games';
 })
 export class GamesService{
 
-  selectedGame: number = 0;
+  public selectedGame: number = 0;
   constructor() { }
 
   getGames() {

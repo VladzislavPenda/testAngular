@@ -13,10 +13,10 @@ export class ScoreCounterService{
 
   private move: number = 0;
   private winnerId?: number;
-  gameHistory: GameHistory = {gameName: 0, moves: []};
+  private gameHistory: GameHistory = {gameName: 0, moves: []};
 
   constructor(private playerService: PlayersService, private game: GamesService) {
-    this.initGame();
+    // this.initGame();
   }
 
   getMovesNumber(): number{

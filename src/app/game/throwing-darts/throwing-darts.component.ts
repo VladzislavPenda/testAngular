@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit} from '@angular/core';
-import { GameUnit } from 'src/app/common/gameUnit';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
+import { PlayersService } from 'src/app/services/players/players.service';
+import { Player } from 'src/app/common/player';
 
 @Component({
   selector: 'app-throwing-darts',
@@ -9,13 +10,11 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
   styleUrls: ['./throwing-darts.component.css']
 })
 export class ThrowingDartsComponent implements OnInit, OnDestroy {
-
-  @Input() gameUnits: GameUnit[] = [];
   public form: FormGroup;
   public submitted = false;
   public throwingArrayInit = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
 
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService)
+  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService)
   {
     this.form = this.fb.group({
     playingUnits: this.fb.array([
@@ -29,12 +28,24 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.playingUnits.removeAt(0);
-    this.gameUnits.forEach(element => {
+
+    this.playersService.players.forEach(element =>{
       this.playingUnits.push(this.fb.group({
-        name: element.person,
+        name: element.name,
         throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
-      }));
+      }))
     });
+
+    // this.gameUnits.forEach(element => {
+    //   this.playingUnits.push(this.fb.group({
+    //     name: element.person,
+    //     throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
+    //   }));
+    // });
+  }
+
+  players(): Player[]{
+    return this.playersService.players;
   }
 
   public count()
@@ -54,6 +65,5 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    console.log("throw destroyed");
   }
 }
