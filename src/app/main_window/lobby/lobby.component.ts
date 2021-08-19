@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayerInfo } from 'src/app/common/playerInfo';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
-import { ChooseGameComponent } from '../choose-game/choose-game.component';
 
 @Component({
   selector: 'app-lobby',
   templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.css']
+  styleUrls: ['./lobby.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LobbyComponent implements OnInit, OnDestroy {
   public players: PlayerInfo[] = [];
