@@ -1,27 +1,27 @@
 import { Injectable, OnDestroy} from '@angular/core';
 import { PLAYERS } from 'src/app/common/mock-players';
-import { Player } from 'src/app/common/player';
+import { PlayerInfo } from 'src/app/common/playerInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayersService implements OnDestroy{
 
-  players: Player[] = [];
+  players: PlayerInfo[] = [];
 
   constructor() {
     this.players = this.getPlayers() //I should ask about this
   }
 
-  addPlayer(player: Player): void {
+  addPlayer(player: PlayerInfo): void {
     this.players.push(player);
   }
 
-  getPlayers(): Player[] {
+  getPlayers(): PlayerInfo[] {
     return PLAYERS;
   }
 
-  takePlayers(): Player[]{
+  takePlayers(): PlayerInfo[]{
     return this.players;
   }
 

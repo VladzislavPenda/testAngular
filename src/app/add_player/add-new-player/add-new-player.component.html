@@ -18,7 +18,7 @@
                 <span class="error-message">Length must be less than 15.</span>
               </div>
             </div>
-            <input type="text" class="input-values" [(ngModel)]="player.name" formControlName="name">
+            <input type="text" class="input-values" formControlName="name">
         </div>
         <div class="input-container">
             <div class="text">E-mail</div>
@@ -31,14 +31,11 @@
               </div>
 
             </div>
-            <input type="text" class="input-values" [(ngModel)]="player.mail" formControlName="mail">
+            <input type="text" class="input-values" formControlName="mail">
         </div>
         <div class="add-button-container">
             <button class="app-button  button-text" type="submit">Add</button>
         </div>
-
     </div>
     </form>
-
-    <!-- <button (click)="addPlayer()"> ffff</button> -->
 </div>

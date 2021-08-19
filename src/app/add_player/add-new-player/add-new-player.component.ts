@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Player } from 'src/app/common/player';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -9,11 +8,10 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './add-new-player.component.html',
   styleUrls: ['./add-new-player.component.css']
 })
-export class AddNewPlayerComponent implements OnInit {
+export class AddNewPlayerComponent{
 
   public submitted: boolean = false;
-  public player: Player = {name: '', mail: ''};
-  
+
   constructor(private playerService: PlayersService, private router: Router, private fb: FormBuilder) { }
 
   form = this.fb.group({
@@ -21,17 +19,13 @@ export class AddNewPlayerComponent implements OnInit {
     mail: ['', [Validators.required, Validators.email]]
   });
 
-
-  ngOnInit(): void {
-  }
-
   addPlayer(): void {
     this.submitted = true;
     console.log(this.form);
     if(this.form.status != "INVALID")
     {
       const navigationParams: string[] = [''];
-      this.playerService.addPlayer(this.player);
+      this.playerService.addPlayer(this.form.value);
       this.router.navigate(navigationParams);
     }
   }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Player } from 'src/app/common/player';
+import { PlayerInfo } from 'src/app/common/playerInfo';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { ChooseGameComponent } from '../choose-game/choose-game.component';
@@ -11,7 +11,7 @@ import { ChooseGameComponent } from '../choose-game/choose-game.component';
   styleUrls: ['./lobby.component.css']
 })
 export class LobbyComponent implements OnInit, OnDestroy {
-  public players: Player[] = [];
+  public players: PlayerInfo[] = [];
 
   constructor(private playerService: PlayersService, private router: Router, private scoreCounter: ScoreCounterService) { }
 

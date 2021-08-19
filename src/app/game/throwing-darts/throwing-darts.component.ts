@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { PlayersService } from 'src/app/services/players/players.service';
-import { Player } from 'src/app/common/player';
+import { PlayerInfo } from 'src/app/common/playerInfo';
 
 @Component({
   selector: 'app-throwing-darts',
@@ -35,16 +35,9 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
         throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
       }))
     });
-
-    // this.gameUnits.forEach(element => {
-    //   this.playingUnits.push(this.fb.group({
-    //     name: element.person,
-    //     throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
-    //   }));
-    // });
   }
 
-  players(): Player[]{
+  players(): PlayerInfo[]{
     return this.playersService.players;
   }
 

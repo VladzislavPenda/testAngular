@@ -1,6 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameHistory } from 'src/app/common/gameHistory';
-import { GameUnit } from 'src/app/common/gameUnit';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
