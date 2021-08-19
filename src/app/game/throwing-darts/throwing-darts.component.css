@@ -32,25 +32,8 @@
   padding: 3em 0;
 }
 
-
-.playing-units-container{
-  display: flex;
-}
-
-
 .input-radiobuttons-container{
   display: flex;
-}
-
-.game-interface-container{
-  border-bottom: solid 1px lightskyblue;
-}
-
-.dart-throwings-container{
-  margin-top: 8px;
-}
-.dart-number{
-  margin-top: 40px;
 }
 
 .input-score{
@@ -72,9 +55,11 @@
 .form_radio_group-item {
   display: inline-block;
 }
+
 .form_radio_group input[type=radio] {
   display: none;
 }
+
 .form_radio_group label {
   display: inline-block;
   cursor: pointer;
@@ -116,22 +101,6 @@
   color: white;
 }
 
-/* .form_radio_group label input[type=radio]:checked + span{
-  background: #4c505e;
-  color: white;
-  padding: 10px;
-} */
-
-/* input[type=radio]{
-  width: 10px;
-} */
-
-/* .form_radio_group .form_radio_group-item:last-child span {
-  border-radius: 0 11px 11px 0;
-  border-right: 2px solid rgb(46, 45, 45);
-} */
-
-
 /* Hover */
 .form_radio_group label:hover {
   color: #666;
@@ -159,4 +128,3 @@
   text-align: center;
   padding-bottom: 10px;
 }
-
