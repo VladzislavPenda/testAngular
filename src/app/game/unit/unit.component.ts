@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, Input, OnInit, Type } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, RequiredValidator } from '@angular/forms';
 import { GameData } from 'src/app/common/gameData';
@@ -13,7 +14,7 @@ export class UnitComponent implements OnInit {
 
   @Input() playerName?: string;
   @Input() gameUnits: GameUnit[] = [];
-  // public form2: FormGroup;
+  @Input() form2?: FormGroup;
 
   public throwingArrayInit = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
 
@@ -47,9 +48,10 @@ export class UnitComponent implements OnInit {
   //     })
   //   ])
   // });
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    console.log("unit init");
     // let throwingArray = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
     let fakeArr = new Array(3)
     // this.form2 = this.fb.group({
@@ -83,8 +85,10 @@ export class UnitComponent implements OnInit {
     // }))
   }
 
-  count(multiplier: number)
+  count()
   {
+    console.log("{{this.form.value | json}}")
+    console.log(this.form.value)
   }
 
   public getArr(index: number) {

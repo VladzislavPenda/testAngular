@@ -16,3 +16,9 @@
     font-family: Arial, sans-serif;
     font-size:medium;
 }
+
+.error-message{
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: rgb(161, 40, 40)
+}

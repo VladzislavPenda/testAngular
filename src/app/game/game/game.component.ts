@@ -1,37 +1,41 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { GameUnit } from 'src/app/common/gameUnit';
 import { PlayersService } from 'src/app/services/players/players.service';
-import { Player } from 'src/app/common/player';
 import { GameData } from 'src/app/common/gameData';
-import { UnitComponent } from '../unit/unit.component';
+import { Router } from '@angular/router';
+import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy{
 
   gameUnits: GameUnit[] = [];
   gameData: GameData[] = [];
 
 
-  constructor(private playerService: PlayersService) { }
+  constructor(private playerService: PlayersService, private router: Router, private scoreCounter: ScoreCounterService) { }
 
   ngOnInit(): void {
     this.playerService.players.forEach(element => {
-      const gameUnit: GameUnit = {person: element, points: 501};
-      // const gameDataElement: GameData = {receivedPoints: [0, 0, 0]}
+      const gameUnit: GameUnit = {person: element.name, points: 501};
       this.gameUnits.push(gameUnit);
-      // this.gameData.push(gameDataElement);
-
     });
-    // console.dir(this.gameUnits)
   }
 
   countPoints(): void {
     this.gameUnits[0].points = 40;
+  }
 
+  newGame(){
+    const navigationParams: string[] = ['/'];
+    this.router.navigate(navigationParams);
+  }
+
+  ngOnDestroy(){
+    this.scoreCounter.removeHistory();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { GameUnit } from 'src/app/common/gameUnit';
 
 @Component({
@@ -6,7 +6,7 @@ import { GameUnit } from 'src/app/common/gameUnit';
   templateUrl: './playing-units.component.html',
   styleUrls: ['./playing-units.component.css']
 })
-export class PlayingUnitsComponent implements OnInit {
+export class PlayingUnitsComponent implements OnInit, OnDestroy {
 
   @Input() gameUnits: GameUnit[] = []
 
@@ -19,4 +19,7 @@ export class PlayingUnitsComponent implements OnInit {
     console.log("Ky")
   }
 
+  ngOnDestroy(){
+    console.log("playing destroyed");
+  }
 }

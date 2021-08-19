@@ -1,6 +1,6 @@
 import { Player } from "./player";
 
 export interface GameUnit{
-    person: Player,
-    points: number 
+    person: string,
+    points: number
 }

@@ -1,5 +1,9 @@
+import { GameUnit } from "./gameUnit";
+import { Players } from "./players";
+
 export interface GameHistory{
-  playerName: string,
-  points: number[],
-  pointsRemaining: number
+  moves: Players[],
+  gameName: number
 }
+
+

@@ -1,99 +1,59 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { GameData } from 'src/app/common/gameData';
+import { Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { GameUnit } from 'src/app/common/gameUnit';
-import { multiplierData } from 'src/app/common/multiplierData';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { UnitComponent } from '../unit/unit.component';
-import { PlayingUnitsComponent } from '../playing-units/playing-units.component';
-// import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
+import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
   selector: 'app-throwing-darts',
   templateUrl: './throwing-darts.component.html',
   styleUrls: ['./throwing-darts.component.css']
 })
-export class ThrowingDartsComponent implements OnInit {
+export class ThrowingDartsComponent implements OnInit, OnDestroy {
 
   @Input() gameUnits: GameUnit[] = [];
-  @ViewChild(PlayingUnitsComponent, {static: false})
-  private unitComponent: PlayingUnitsComponent|undefined;
-
-  multiplierDataArray: multiplierData[] = [];
-  // form: FormGroup;
-
-
-  playingUnitsForm = this.fb.group({
-    playingUnits: this.fb.array([
-      this.fb.group({
-        playerName: [''],
-        throwings: this.fb.array([
-          this.fb.group({
-            points: [''],
-            multiplier: ['']
-          })
-        ])
-      })
-    ])
-  })
+  public form: FormGroup;
+  public submitted = false;
   public throwingArrayInit = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
-  form = this.fb.group({
+
+  constructor(private fb: FormBuilder, private counterService: ScoreCounterService)
+  {
+    this.form = this.fb.group({
     playingUnits: this.fb.array([
       this.fb.group({
-        name: ['first'],
+        name: [''],
         throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
       })
     ])
   });
-
-
-
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      playingUnits: this.fb.array([
-        this.fb.group({
-          name: ['first'],
-          throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
-        })
-      ])
-    });
-    // for(var i: number = 0; i++; i < this.gameData.length){
-    //   this.gameData[i].receivedPoints.forEach(element => {
-    //     element = 0;
-    //   })
-    // }
   }
 
   ngOnInit(): void {
-
-    // console.dir(this.gameUnits);
-    // this.form = this.fb.group({
-    //   units: this.fb.array(this.gameUnits.map(_ => this.fb.control(null)))
-    // });
-    // this.gameUnits = this.scoreCounter.gameUnits
-
-
-
+    this.playingUnits.removeAt(0);
+    this.gameUnits.forEach(element => {
+      this.playingUnits.push(this.fb.group({
+        name: element.person,
+        throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
+      }));
+    });
   }
 
-  handleChange(event: any): void{
-    console.dir(event?.target.value)
-    console.dir(event.target.name)
-    // console.dir(this.gameData[0].receivedPoints[0])
-    // var target = evt.target.value
-    // console.dir(target)
-    // console.log(target.value);
+  public count()
+  {
+    this.submitted = true;
+    if(this.form.status != "INVALID" && this.counterService.getWinnerId() == undefined && this.counterService.getMovesNumber() != 20){
+      this.counterService.count(this.form.value);
+    }
   }
 
-  countPoints(): void{
-    // console.dir()
-    // const form = document.forms;
-    // console.log(form);
-    this.unitComponent?.count()
-    // const radios = form.item
+  public getArr(index: number) {
+    return (this.form.get(`playingUnits.${index}.throwings`) as FormArray).controls;
   }
 
-  go(){
-    console.log(this.playingUnitsForm.value)
+  private get playingUnits(){
+    return this.form.get('playingUnits') as FormArray;
   }
 
+  ngOnDestroy(){
+    console.log("throw destroyed");
+  }
 }

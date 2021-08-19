@@ -1,8 +1,8 @@
 
 
     <div *ngFor="let item of gameUnits; let j=index" >
-      <div class="text">{{item.person.name}}</div>
-      <app-unit [playerName]="item.person.name"></app-unit>
+      <div class="text">{{item.person}}</div>
+      <app-unit [playerName]="item.person"></app-unit>
    </div>
 
 

@@ -106,3 +106,14 @@
   background: #efefef;
   color: #666;
 }
+
+
+.add-button{
+  height: 30px;
+  width: 40%;
+  margin: auto;
+}
+
+.playing-units{
+  display: flex;
+}

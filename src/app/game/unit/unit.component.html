@@ -1,7 +1,7 @@
-<form action="" [formGroup]="form">
-  <div formArrayName="playingUnits">
+<form action="" [formGroup]="form" (ngSubmit)="count()">
+  <div formArrayName="playingUnits" class="playing-units">
     <div *ngFor="let item of gameUnits; let j=index" [formGroupName]="j">
-      <div class="text">{{item.person.name}}</div>
+      <div class="text">{{item.person}}</div>
 
         <div formArrayName="throwings">
           <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
@@ -10,21 +10,26 @@
             </div>
             <div class="form_radio_group">
               <div class="form_radio_group-item">
-                <input id="radio1_{{i}}{{item.person.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
-                <label for="radio1_{{i}}{{item.person.name}}">1x</label>
+                <input id="radio1_{{i}}{{item.person}}" type="radio" [value]="1" formControlName="multiplier" checked>
+                <label for="radio1_{{i}}{{item.person}}">1x</label>
               </div>
               <div class="form_radio_group-item">
-                <input id="radio2_{{i}}{{item.person.name}}" type="radio" [value]="2" formControlName="multiplier" >
-                <label for="radio2_{{i}}{{item.person.name}}">2x</label>
+                <input id="radio2_{{i}}{{item.person}}" type="radio" [value]="2" formControlName="multiplier" >
+                <label for="radio2_{{i}}{{item.person}}">2x</label>
               </div>
               <div class="form_radio_group-item">
-                <input id="radio3_{{i}}{{item.person.name}}" type="radio" [value]="3" formControlName="multiplier" >
-                <label for="radio3_{{i}}{{item.person.name}}">3x</label>
+                <input id="radio3_{{i}}{{item.person}}" type="radio" [value]="3" formControlName="multiplier" >
+                <label for="radio3_{{i}}{{item.person}}">3x</label>
               </div>
             </div>
            </div>
         </div>
-        {{form.value | json}}
+        <!-- {{form.value | json}} -->
     </div>
   </div>
+  <button type="submit" class="app-button add-button">Add</button>
 </form>
+<!-- <div [formGroup]="form2">
+  <input type="text" formControlName="name">
+  <input type="text" formControlName="age">
+</div> -->

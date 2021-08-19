@@ -1,4 +1,41 @@
+:host{
+  display: flex;
+  padding-top: 2em;
+}
+
+.move-counter-container{
+  width: 10%;
+  padding-top: 28.4px;
+}
+
 .players-name-container{
     display: flex;
     justify-content: space-around;
+}
+
+.name-container{
+  width:170px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.move-number{
+  text-align: center;
+  height: 24px;
+  padding-top: 5px;
+}
+
+
+
+.dashboard-info-container{
+  width: 80%;
+}
+
+.one-move-row-container{
+  padding: 5px 0;
+  display: flex;
+  /* height: 35px; */
+  background-color: seashell;
+  justify-content: space-around;
+  border-bottom: 1px solid #039be6;
 }

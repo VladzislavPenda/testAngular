@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { GamesService } from 'src/app/services/games/games.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { GamesService } from 'src/app/services/games/games.service';
   templateUrl: './choose-game.component.html',
   styleUrls: ['./choose-game.component.css']
 })
-export class ChooseGameComponent implements OnInit {
+export class ChooseGameComponent implements OnInit, OnDestroy {
 
   games: number[] = [];
   selectedGame: number = 0;
@@ -22,4 +22,7 @@ export class ChooseGameComponent implements OnInit {
     this.selectedGame = this.gamesService.selectedGame;
   }
 
+  ngOnDestroy(){
+    console.log("choose game destroyed");
+  }
 }
