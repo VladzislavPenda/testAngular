@@ -1,9 +1,10 @@
-.games{
-  display: flex;
+:host{
+  display: block;
+  margin: 60px 0px;
 }
 
-.games-choosing-container{
-  margin: 60px 0px;
+.games{
+  display: flex;
 }
 
 .game-item{

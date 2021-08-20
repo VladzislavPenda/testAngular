@@ -1,3 +1,10 @@
+:host{
+  width: 500px;
+  display: block;
+  margin: auto;
+  padding-top: 10em;
+}
+
 *{
     box-sizing: border-box;
 }
@@ -72,11 +79,11 @@ body {
   border-bottom: 1px solid #039be6;
 }
 
-.lobby-container{
+/* .lobby-container{
   width: 500px;
   margin: auto;
   padding-top: 10em;
-}
+} */
 
 .create-player{
   height: 100%;

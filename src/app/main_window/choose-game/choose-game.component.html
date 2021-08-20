@@ -1,20 +1,13 @@
-
-<div class="games-choosing-container">
-    <p class="text">Сhoose game</p>
-    <div class="games">
-        <div *ngFor="let game of games" class="game-item" (click)="selectGame(game)">
-            <!-- <div *ngIf="game===this.game">
-                <p class="game-name">{{game}}</p>
-            </div> -->
-            <ng-container *ngIf="selectedGame===this.game; else elseTemplate">
-                <p class="game-name set-color">{{game}}</p>
-            </ng-container>
-            <ng-template #elseTemplate>
-                <p class="game-name">{{game}}</p>
-            </ng-template>
-
-        </div>
-    </div>
+<p class="text">Сhoose game</p>
+<div class="games">
+  <div *ngFor="let game of games" class="game-item" (click)="selectGame(game)">
+      <ng-container *ngIf="selectedGame===this.game; else elseTemplate">
+          <p class="game-name set-color">{{game}}</p>
+      </ng-container>
+      <ng-template #elseTemplate>
+          <p class="game-name">{{game}}</p>
+      </ng-template>
+  </div>
 </div>
 
 

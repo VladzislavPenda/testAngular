@@ -1,15 +1,15 @@
-/* host doesn't work
-/* :host{
+:host{
+  display: block;
   width: 300px;
   margin: auto;
   padding-top: 10em;
-} */
+}
 
-.add-new-player-container{
+/* .add-new-player-container{
     width: 300px;
     margin: auto;
     padding-top: 10em;
-}
+} */
 
 .logo{
   width: 50%;

@@ -1,29 +1,27 @@
-<div class="lobby-container">
-    <p class="text">Select players</p>
-    <div class="lobby-header-buttons">
-        <div class="form-group fg--search">
-            <input type="text" placeholder="Search" class="search-input">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-        <div class="create-player-button-container">
-            <button class="app-button button-text" (click)="goToCreatingPlayer()">New player</button>
-        </div>
-    </div>
-    <div class="players-board">
-        <div *ngFor="let player of players; index as i" class="player-unit">
-            <div class="item player-name">
-                <p>{{player.name}}</p>
-            </div>
-            <div class="item player-mail">
-                <p>{{player.mail}}</p>
-            </div>
-            <div class="delete-icon-container">
-                <i class="fas fa-times" style="color: grey;" (click)="deletePlayer(i)"></i>
-            </div>
-        </div>
-    </div>
-    <app-choose-game></app-choose-game>
-    <div class="start-button-container">
-        <button class="start-button" (click)="startGame()">Start</button>
-    </div>
+<p class="text">Select players</p>
+<div class="lobby-header-buttons">
+  <div class="form-group fg--search">
+      <input type="text" placeholder="Search" class="search-input">
+      <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <div class="create-player-button-container">
+      <button class="app-button button-text" (click)="goToCreatingPlayer()">New player</button>
+  </div>
+</div>
+<div class="players-board">
+  <div *ngFor="let player of players; index as i" class="player-unit">
+      <div class="item player-name">
+          <p>{{player.name}}</p>
+      </div>
+      <div class="item player-mail">
+          <p>{{player.mail}}</p>
+      </div>
+      <div class="delete-icon-container">
+          <i class="fas fa-times" style="color: grey;" (click)="deletePlayer(i)"></i>
+      </div>
+  </div>
+</div>
+<app-choose-game></app-choose-game>
+<div class="start-button-container">
+  <button class="start-button" (click)="startGame()">Start</button>
 </div>

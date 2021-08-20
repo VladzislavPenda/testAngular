@@ -1,7 +1,8 @@
-.game-container{
-    width: 1000px;
-    margin: auto;
-    padding-top: 5em;
+:host{
+  display: block;
+  width: 1000px;
+  margin: auto;
+  padding-top: 5em;
 }
 
 .game-header{
