@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { GamesService } from 'src/app/services/games/games.service';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-choose-game',
@@ -7,20 +6,17 @@ import { GamesService } from 'src/app/services/games/games.service';
   styleUrls: ['./choose-game.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChooseGameComponent implements OnInit, OnDestroy {
+export class ChooseGameComponent implements OnDestroy {
 
-  public games: number[] = [];
-  public selectedGame: number = 0;
+  public games: string[] = ['501', '301'];
+  public selectedGame?: string;
+  @Output() selectedGameEvent = new EventEmitter<string>();
 
-  constructor(private gamesService: GamesService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.games = this.gamesService.getGames();
-  }
-
-  selectGame(gameName: number): void{
-    this.gamesService.selectGame(gameName);
-    this.selectedGame = this.gamesService.selectedGame;
+  selectGame(gameName: string): void{
+    this.selectedGameEvent.emit(gameName);
+    this.selectedGame = gameName;
   }
 
   ngOnDestroy(){

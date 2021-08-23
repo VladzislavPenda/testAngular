@@ -12,6 +12,8 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
 })
 export class LobbyComponent implements OnInit, OnDestroy {
   public players: PlayerInfo[] = [];
+  public selectedGame?: string;
+  public tryStartGameWithErrors: boolean = false;
 
   constructor(private playerService: PlayersService, private router: Router, private scoreCounter: ScoreCounterService) { }
 
@@ -28,8 +30,17 @@ export class LobbyComponent implements OnInit, OnDestroy {
   }
 
   startGame(): void{
-    this.router.navigate(['/game']);
-    this.scoreCounter.initGame();
+    if(this.selectedGame != null){
+      this.router.navigate([`/game/${this.selectedGame}`]);
+      this.scoreCounter.initGame();
+    }
+    else{
+      this.tryStartGameWithErrors = true
+    }
+  }
+
+  addSelectedGame(gameName: string){
+    this.selectedGame = gameName;
   }
 
   ngOnDestroy(){

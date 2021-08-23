@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { PlayersService } from '../players/players.service';
 import { GameHistory } from 'src/app/common/gameHistory';
-import { GamesService } from '../games/games.service';
 import { gameForm, Throwings } from 'src/app/common/gameForm';
 import { Players } from 'src/app/common/players';
 import { GameUnit } from 'src/app/common/gameUnit';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,11 @@ export class ScoreCounterService{
   private move: number = 0;
   private winnerId?: number;
 
-  private subject = new BehaviorSubject<GameHistory>({gameName: 0, moves: []});
+  private subject = new BehaviorSubject<GameHistory>({gameName: '', moves: []});
   public gameHistory: Observable<GameHistory> = this.subject.asObservable();
 
-  constructor(private playerService: PlayersService, private game: GamesService) {
+  constructor(private playerService: PlayersService, private route: ActivatedRoute) {
+    console.log(this.route.snapshot.paramMap.get('id'))
   }
 
   getMovesNumber(): number{
@@ -60,13 +61,15 @@ export class ScoreCounterService{
   }
 
   initGame(){
-    let gameHistory: GameHistory = {gameName: 0, moves: []};
+    let gameHistory: GameHistory = {gameName: '', moves: []};
     let playersMoveData: Players = {players: []};
     this.playerService.players.forEach(element => {
       playersMoveData.players.push({person: element.name, points: 501});
     });
 
-    gameHistory.gameName = this.game.selectedGame;
+    // gameHistory.gameName = this.game.selectedGame;
+    console.log(this.route.snapshot.paramMap.get('id'))
+    gameHistory.gameName = '501';
     gameHistory.moves.push(playersMoveData);
     this.loadHistory(gameHistory);
   }
