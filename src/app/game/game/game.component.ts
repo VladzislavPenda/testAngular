@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
@@ -6,18 +6,15 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ScoreCounterService]
 })
-export class GameComponent implements OnDestroy{
-  constructor(private router: Router, private scoreCounter: ScoreCounterService) { }
+export class GameComponent{
+
+  constructor(private router: Router) {
+  }
 
   newGame(){
-    const navigationParams: string[] = ['/'];
-    this.router.navigate(navigationParams);
+    this.router.navigate(['/']);
   }
-
-  ngOnDestroy(){
-    this.scoreCounter.removeHistory();
-  }
-
 }

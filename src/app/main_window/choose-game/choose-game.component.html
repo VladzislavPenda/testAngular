@@ -1,12 +1,7 @@
 <p class="text">Сhoose game</p>
 <div class="games">
   <div *ngFor="let game of games" class="game-item" (click)="selectGame(game)">
-      <ng-container *ngIf="selectedGame===this.game; else elseTemplate">
-          <p class="game-name set-color">{{game}}</p>
-      </ng-container>
-      <ng-template #elseTemplate>
-          <p class="game-name">{{game}}</p>
-      </ng-template>
+      <p class="game-name" [class.set-color]="selectedGame===this.game">{{game}}</p>
   </div>
 </div>
 

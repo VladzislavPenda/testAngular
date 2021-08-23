@@ -21,7 +21,9 @@
       </div>
   </div>
 </div>
-<app-choose-game></app-choose-game>
+<app-choose-game (selectedGameEvent)="addSelectedGame($event)"></app-choose-game>
 <div class="start-button-container">
+  <span *ngIf="tryStartGameWithErrors===true" class="error-message">Plese, choose game.</span>
   <button class="start-button" (click)="startGame()">Start</button>
 </div>
+
