@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Router } from '@angular/router';
 import { PlayerInfo } from 'src/app/common/playerInfo';
 import { PlayersService } from 'src/app/services/players/players.service';
-import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
   selector: 'app-lobby',
@@ -15,7 +14,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
   public selectedGame?: string;
   public tryStartGameWithErrors: boolean = false;
 
-  constructor(private playerService: PlayersService, private router: Router, private scoreCounter: ScoreCounterService) { }
+  constructor(private playerService: PlayersService, private router: Router) { }
 
   ngOnInit(): void {
     this.players = this.playerService.players;
@@ -32,7 +31,6 @@ export class LobbyComponent implements OnInit, OnDestroy {
   startGame(): void{
     if(this.selectedGame != null){
       this.router.navigate([`/game/${this.selectedGame}`]);
-      this.scoreCounter.initGame();
     }
     else{
       this.tryStartGameWithErrors = true

@@ -5,7 +5,7 @@ import { gameForm, Throwings } from 'src/app/common/gameForm';
 import { Players } from 'src/app/common/players';
 import { GameUnit } from 'src/app/common/gameUnit';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,16 @@ export class ScoreCounterService{
 
   private move: number = 0;
   private winnerId?: number;
-
+  private selectedGame: string | null;
   private subject = new BehaviorSubject<GameHistory>({gameName: '', moves: []});
   public gameHistory: Observable<GameHistory> = this.subject.asObservable();
 
-  constructor(private playerService: PlayersService, private route: ActivatedRoute) {
-    console.log(this.route.snapshot.paramMap.get('id'))
+  constructor(private playerService: PlayersService, private route: ActivatedRoute, private router: Router) {
+    this.selectedGame = this.route.snapshot.paramMap.get('id');
+    if(this.selectedGame === '301'){
+      this.router.navigate(['/error']);
+    }
+    this.initGame();
   }
 
   getMovesNumber(): number{
@@ -30,9 +34,8 @@ export class ScoreCounterService{
     return this.winnerId;
   }
 
-
-
   count(data: gameForm): void{
+    console.log("count")
     let playersMoveData: Players = {players: []};
     let recievedPoints = 0;
     let points = 0;
@@ -43,7 +46,7 @@ export class ScoreCounterService{
       [recievedPoints, lastMultiplierValue] = this.getRecievedPointsWithLastMultiplier(data.playingUnits[i].throwings, i, recievedPoints, lastMultiplierValue);
       points = this.countTotalPoints(previosPoints, recievedPoints);
       if (points == 0 && lastMultiplierValue == 2){
-        this.winnerId = i; // implement winning panel
+        this.winnerId = i; // implement winning panel later
       }
 
       playersMoveData.players.push({person: data.playingUnits[i].name, points: points});
@@ -61,15 +64,14 @@ export class ScoreCounterService{
   }
 
   initGame(){
+    this.selectedGame = this.route.snapshot.paramMap.get('id');
     let gameHistory: GameHistory = {gameName: '', moves: []};
     let playersMoveData: Players = {players: []};
     this.playerService.players.forEach(element => {
       playersMoveData.players.push({person: element.name, points: 501});
     });
 
-    // gameHistory.gameName = this.game.selectedGame;
-    console.log(this.route.snapshot.paramMap.get('id'))
-    gameHistory.gameName = '501';
+    gameHistory.gameName = this.selectedGame;
     gameHistory.moves.push(playersMoveData);
     this.loadHistory(gameHistory);
   }
@@ -113,12 +115,6 @@ export class ScoreCounterService{
     }
 
     this.winnerId = winnerId;
-  }
-
-  removeHistory(): void{
-    console.log(this.subject.value);
-    this.move = 0;
-    this.winnerId = undefined;
   }
 
   loadHistory(history: GameHistory){

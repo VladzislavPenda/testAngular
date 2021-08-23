@@ -6,13 +6,12 @@
       </span>
     </div>
   </div>
-
 </div>
 <div class="dashboard-info-container">
   <div class="players-name-container">
     <div *ngFor="let item of getPlayers(); index as i" >
       <div class="name-container text">
-        {{item.name}}
+        <span>{{item.name}}</span>
         <ng-container *ngIf="WinnerId == i">+</ng-container>
       </div>
     </div>
@@ -20,9 +19,7 @@
   <div *ngFor="let moves of (gameHistory | async)?.moves; index as i" class="">
     <div class="one-move-row-container">
       <div *ngFor="let unit of moves.players">
-        <div class="">
-          {{unit.points}}
-        </div>
+        {{unit.points}}
       </div>
     </div>
   </div>

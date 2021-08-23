@@ -13,6 +13,7 @@ import { ThrowingDartsComponent } from './game/throwing-darts/throwing-darts.com
 import { DashboardComponent } from './game/dashboard/dashboard.component';
 
 import { PointsCustomInputComponent } from './game/points-custom-input/points-custom-input.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PointsCustomInputComponent } from './game/points-custom-input/points-cu
     GameComponent,
     ThrowingDartsComponent,
     DashboardComponent,
-    PointsCustomInputComponent
+    PointsCustomInputComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

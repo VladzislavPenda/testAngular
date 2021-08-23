@@ -1,0 +1,12 @@
+:host{
+  display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding-top: 20em;
+}
+
+.app-button{
+  width: 50%;
+  height: 35px;
+}

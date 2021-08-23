@@ -8,7 +8,7 @@ import { PlayerInfo } from 'src/app/common/playerInfo';
   selector: 'app-throwing-darts',
   templateUrl: './throwing-darts.component.html',
   styleUrls: ['./throwing-darts.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThrowingDartsComponent implements OnInit, OnDestroy {
   public form: FormGroup;
