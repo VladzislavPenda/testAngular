@@ -8,14 +8,10 @@
   padding-top: 50px;
 }
 
-.playing-units-container{
+.playing-units{
   display: flex;
+  justify-content: space-around;
   width: 90%;
-    justify-content: center;
-}
-
-.game-interface-container{
-  border-bottom: solid 1px lightskyblue;
 }
 
 .dart-throwings-container{
@@ -23,13 +19,6 @@
 }
 .dart-number{
   margin-top: 40px;
-}
-
-.add-score-button-container{
-  width: 40%;
-  height: 40px;
-  margin:auto;
-  padding: 3em 0;
 }
 
 .input-radiobuttons-container{
@@ -112,11 +101,12 @@
   color: #666;
 }
 
-.playing-units{
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+.add-button{
+  width: 40%;
+  margin: 5% 30%;
+  height: 40px;
 }
+
 
 .unit{
   margin-left: 10px;

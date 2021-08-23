@@ -8,22 +8,19 @@
       <button class="app-button button-text" (click)="goToCreatingPlayer()">New player</button>
   </div>
 </div>
-<div class="players-board">
-  <div *ngFor="let player of players; index as i" class="player-unit">
-      <div class="item player-name">
-          <p>{{player.name}}</p>
-      </div>
-      <div class="item player-mail">
-          <p>{{player.mail}}</p>
-      </div>
-      <div class="delete-icon-container">
-          <i class="fas fa-times" style="color: grey;" (click)="deletePlayer(i)"></i>
-      </div>
+<div *ngFor="let player of players; index as i" class="player-unit">
+  <div class="item player-name">
+      <p>{{player.name}}</p>
+  </div>
+  <div class="item player-mail">
+      <p>{{player.mail}}</p>
+  </div>
+  <div class="delete-icon-container">
+      <i class="fas fa-times" style="color: grey;" (click)="deletePlayer(i)"></i>
   </div>
 </div>
 <app-choose-game (selectedGameEvent)="addSelectedGame($event)"></app-choose-game>
-<div class="start-button-container">
-  <span *ngIf="tryStartGameWithErrors===true" class="error-message">Plese, choose game.</span>
-  <button class="start-button" (click)="startGame()">Start</button>
-</div>
+<span *ngIf="tryStartGameWithErrors===true" class="error-message">Plese, choose game.</span>
+<button class="start-button" (click)="startGame()">Start</button>
+
 

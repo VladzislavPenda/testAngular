@@ -76,23 +76,15 @@ body {
 
 .player-unit {
   display: flex;
+  background-color: #ffff;
   border-bottom: 1px solid #039be6;
 }
-
-/* .lobby-container{
-  width: 500px;
-  margin: auto;
-  padding-top: 10em;
-} */
 
 .create-player{
   height: 100%;
   width: 100%;
 }
 
-.players-board {
-  background-color: #ffff;
-}
 .item {
   width: 200px;
   margin-left: 20px;
@@ -123,6 +115,7 @@ body {
 
 .start-button{
   background-color: #37bf97;
+  padding: 10px;
   width: 100%;
   height: 100%;
   border-radius: 4px;
@@ -130,10 +123,6 @@ body {
   color: #82e5c9;
   font-size: 20px;
   cursor: pointer;
-}
-
-.start-button-container{
-  height: 40px;
 }
 
 ::placeholder{

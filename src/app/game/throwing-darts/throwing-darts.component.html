@@ -1,47 +1,39 @@
 <form action="" [formGroup]="form" (ngSubmit)="count()">
-  <div class="game-interface-container">
-    <div class="playing-zone">
-      <div class="dart-throwings-container">
-        <div class="text dart-number">dart 1</div>
-        <div class="text dart-number">dart 2</div>
-        <div class="text dart-number">dart 3</div>
-      </div>
-      <div class="playing-units-container">
-        <div formArrayName="playingUnits" class="playing-units">
-          <div *ngFor="let item of players(); let j=index" [formGroupName]="j" class="unit">
-            <div class="text">{{item.name}}</div>
-              <div formArrayName="throwings">
-                <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
-                  <div>
-                     <app-points-custom-input type="number" class="input-score" formControlName="points"></app-points-custom-input>
-                  </div>
-                  <div class="form_radio_group">
-                    <div class="form_radio_group-item">
-                      <input id="radio1_{{i}}{{item.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
-                      <label for="radio1_{{i}}{{item.name}}">1x</label>
-                    </div>
-                    <div class="form_radio_group-item">
-                      <input id="radio2_{{i}}{{item.name}}" type="radio" [value]="2" formControlName="multiplier" >
-                      <label for="radio2_{{i}}{{item.name}}">2x</label>
-                    </div>
-                    <div class="form_radio_group-item">
-                      <input id="radio3_{{i}}{{item.name}}" type="radio" [value]="3" formControlName="multiplier" >
-                      <label for="radio3_{{i}}{{item.name}}">3x</label>
-                    </div>
-                  </div>
-                </div>
+  <div class="playing-zone">
+    <div class="dart-throwings-container">
+      <div class="text dart-number">dart 1</div>
+      <div class="text dart-number">dart 2</div>
+      <div class="text dart-number">dart 3</div>
+    </div>
+    <div formArrayName="playingUnits" class="playing-units">
+      <div *ngFor="let item of players(); let j=index" [formGroupName]="j" class="unit">
+        <span class="text">{{item.name}}</span>
+        <div formArrayName="throwings">
+          <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
+            <div>
+               <app-points-custom-input type="number" class="input-score" formControlName="points"></app-points-custom-input>
+            </div>
+            <div class="form_radio_group">
+              <div class="form_radio_group-item">
+                <input id="radio1_{{i}}{{item.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
+                <label for="radio1_{{i}}{{item.name}}">1x</label>
               </div>
+              <div class="form_radio_group-item">
+                <input id="radio2_{{i}}{{item.name}}" type="radio" [value]="2" formControlName="multiplier" >
+                <label for="radio2_{{i}}{{item.name}}">2x</label>
+              </div>
+              <div class="form_radio_group-item">
+                <input id="radio3_{{i}}{{item.name}}" type="radio" [value]="3" formControlName="multiplier" >
+                <label for="radio3_{{i}}{{item.name}}">3x</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="add-score-button-container">
-      <button type="submit" class="app-button add-button">Add</button>
-    </div>
-    <div *ngIf="submitted && form.status=='INVALID'" class="error-message">
-      <span>Plese enter the data correctly(points cannot be less than 0 and more than 20)</span>
-    </div>
   </div>
+  <button type="submit" class="app-button add-button">Add</button>
+  <span *ngIf="submitted && form.status=='INVALID'" class="error-message">Plese enter the data correctly(points cannot be less than 0 and more than 20)</span>
 </form>
 
 
