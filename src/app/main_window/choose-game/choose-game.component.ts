@@ -19,7 +19,7 @@ export class ChooseGameComponent implements OnInit, OnDestroy {
   }
 
   selectGame(gameName: number): void{
-    this.gamesService.SelectGame(gameName);
+    this.gamesService.selectGame(gameName);
     this.selectedGame = this.gamesService.selectedGame;
   }
 

@@ -1,39 +1,26 @@
 <div class="logo">
   <app-logo></app-logo>
 </div>
-<form action=""  [formGroup]="form" (ngSubmit)="addPlayer()">
-<div class="input-players-info-container">
+<form action=""  [formGroup]="form" (ngSubmit)="addPlayer()" class="input-players-info-container">
   <p class="text header-text">Add a new player to start a game</p>
   <div class="input-container">
-      <div class="text">Nickname</div>
-      <div *ngIf="submitted">
-        <div *ngIf="this.form.controls.name.errors?.required">
-          <span class="error-message">This field is required.</span>
-        </div>
-        <div *ngIf="this.form.controls.name.errors?.minlength">
-          <span class="error-message">Length must be at least 6.</span>
-        </div>
-        <div *ngIf="this.form.controls.name.errors?.maxlength">
-          <span class="error-message">Length must be less than 15.</span>
-        </div>
+      <span class="text">Nickname</span>
+      <div [hidden]="form.controls.name.untouched">
+        <span *ngIf="this.form.controls.name.errors?.required" class="error-message">This field is required.</span>
+        <span *ngIf="this.form.controls.name.errors?.minlength" class="error-message">Length must be at least 6.</span>
+        <span *ngIf="this.form.controls.name.errors?.maxlength" class="error-message">Length must be less than 15.</span>
       </div>
-      <input type="text" class="input-values" formControlName="name">
+      <input type="text" class="input-values" name="name" formControlName="name">
   </div>
   <div class="input-container">
-      <div class="text">E-mail</div>
-      <div *ngIf="submitted">
-        <div *ngIf="this.form.controls.mail.errors?.required">
-          <span class="error-message">This field is required.</span>
-        </div>
-        <div *ngIf="this.form.controls.mail.errors?.email">
-          <span class="error-message">This field is incorrect.</span>
-        </div>
-
+      <span class="text">E-mail</span>
+      <div [hidden]="form.controls.mail.untouched">
+        <span *ngIf="this.form.controls.mail.errors?.required" class="error-message">This field is required.</span>
+        <span *ngIf="this.form.controls.mail.errors?.email" class="error-message">This field is incorrect.</span>
       </div>
       <input type="text" class="input-values" formControlName="mail">
   </div>
   <div class="add-button-container">
       <button class="app-button  button-text" type="submit">Add</button>
   </div>
-</div>
 </form>

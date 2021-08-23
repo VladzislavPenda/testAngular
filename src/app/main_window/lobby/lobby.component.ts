@@ -20,8 +20,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
   }
 
   goToCreatingPlayer(): void{
-    const navigationParams: string[] = ['/create'];
-    this.router.navigate(navigationParams);
+    this.router.navigate(['/create']);
   }
 
   deletePlayer(index: number): void{
@@ -29,8 +28,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
   }
 
   startGame(): void{
-    const navigationParams: string[] = ['/game'];
-    this.router.navigate(navigationParams);
+    this.router.navigate(['/game']);
     this.scoreCounter.initGame();
   }
 

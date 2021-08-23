@@ -13,7 +13,7 @@ export class GamesService{
     return GAMES;
   }
 
-  SelectGame(gameName: number){
+  selectGame(gameName: number){
     this.selectedGame=gameName;
   }
 }

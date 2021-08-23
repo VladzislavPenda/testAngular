@@ -12,8 +12,7 @@ export class GameComponent implements OnDestroy{
   constructor(private router: Router, private scoreCounter: ScoreCounterService) { }
 
   newGame(){
-    const navigationParams: string[] = ['/'];
-    this.router.navigate(navigationParams);
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(){
