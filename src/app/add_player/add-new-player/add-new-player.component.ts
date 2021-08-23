@@ -17,7 +17,6 @@ export class AddNewPlayerComponent{
   });
 
   addPlayer(): void {
-    console.log(this.form);
     if(this.form.status != "INVALID")
     {
       this.playerService.addPlayer(this.form.value);

@@ -35,7 +35,6 @@ export class ScoreCounterService{
   }
 
   count(data: gameForm): void{
-    console.log("count")
     let playersMoveData: Players = {players: []};
     let recievedPoints = 0;
     let points = 0;
