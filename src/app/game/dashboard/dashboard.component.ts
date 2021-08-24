@@ -20,15 +20,15 @@ export class DashboardComponent implements OnInit {
     this.gameHistory = this.counterService.gameHistory;
   }
 
-  getPlayers(): PlayerInfo[]{
-    return this.playersService.players;
+  public getPlayers(): PlayerInfo[]{
+    return this.playersService.takePlayers();
   }
 
-  get moveNumber(): number{
+  public get moveNumber(): number{
     return this.counterService.getMovesNumber();
   }
 
-  get WinnerId(): number | undefined{
+  public get WinnerId(): number | undefined{
     return this.counterService.getWinnerId();
   }
 }

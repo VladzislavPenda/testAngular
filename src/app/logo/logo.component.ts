@@ -5,6 +5,5 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.css']
 })
-export class LogoComponent{
-  constructor() { }
-}
+
+export class LogoComponent { }

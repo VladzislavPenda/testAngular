@@ -1,13 +1,13 @@
-:host{
+:host {
   display: block;
   margin: 60px 0px;
 }
 
-.games{
+.games {
   display: flex;
 }
 
-.game-item{
+.game-item {
   width: 20%;
   height: 100px;
   background-color: white;
@@ -15,7 +15,7 @@
   margin-right: 20px;
 }
 
-.game-name{
+.game-name {
   width: auto;
   height: auto;
   margin-left: 30px;
@@ -23,18 +23,18 @@
   font-weight: bold;
 }
 
-.set-color{
+.set-color {
   color: rgb(216, 56, 149);
 }
 
-.game-item:hover{
+.game-item:hover {
   background-color: lightgrey;
 }
 
-.game-item:active{
+.game-item:active {
   background-color: grey;
 }
 
-.active{
+.active {
   background-color: grey;
 }

@@ -16,7 +16,7 @@
       <p>{{player.mail}}</p>
   </div>
   <div class="delete-icon-container">
-      <i class="fas fa-times" style="color: grey;" (click)="deletePlayer(i)"></i>
+      <i class="fas fa-times" (click)="deletePlayer(i)"></i>
   </div>
 </div>
 <app-choose-game (selectedGameEvent)="addSelectedGame($event)"></app-choose-game>

@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { PlayerInfo } from 'src/app/common/playerInfo';
+import { Throwings } from 'src/app/common/gameForm';
 
 @Component({
   selector: 'app-throwing-darts',
@@ -10,27 +11,21 @@ import { PlayerInfo } from 'src/app/common/playerInfo';
   styleUrls: ['./throwing-darts.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ThrowingDartsComponent implements OnInit, OnDestroy {
+
+export class ThrowingDartsComponent implements OnInit {
   public form: FormGroup;
   public submitted = false;
-  public throwingArrayInit = [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
+  public throwingArrayInit: Throwings[];
 
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService)
-  {
+  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService) {
+    this.throwingArrayInit = this.initializeArray();
     this.form = this.fb.group({
-    playingUnits: this.fb.array([
-      this.fb.group({
-        name: [''],
-        throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
-      })
-    ])
-  });
+      playingUnits: this.fb.array([])
+    });
   }
 
   ngOnInit(): void {
-    this.playingUnits.removeAt(0);
-
-    this.playersService.players.forEach(element =>{
+    this.playersService.takePlayers().forEach(element => {
       this.playingUnits.push(this.fb.group({
         name: element.name,
         throwings: this.fb.array(this.throwingArrayInit.map(_ => this.fb.group({points: 0, multiplier: 1})))
@@ -38,14 +33,17 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
     });
   }
 
-  players(): PlayerInfo[]{
-    return this.playersService.players;
+  private initializeArray(): Throwings[] {
+    return [{points: 0, multiplier: 0}, {points: 0, multiplier: 0}, {points: 0, multiplier: 0}];
   }
 
-  public count()
-  {
+  public players(): PlayerInfo[] {
+    return this.playersService.takePlayers();
+  }
+
+  public count() {
     this.submitted = true;
-    if(this.form.status != "INVALID" && this.counterService.getWinnerId() == undefined && this.counterService.getMovesNumber() != 20){
+    if(this.form.status != "INVALID" && this.counterService.check()) {
       this.counterService.count(this.form.value);
     }
   }
@@ -54,10 +52,7 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
     return (this.form.get(`playingUnits.${index}.throwings`) as FormArray).controls;
   }
 
-  private get playingUnits(){
+  private get playingUnits() {
     return this.form.get('playingUnits') as FormArray;
-  }
-
-  ngOnDestroy(){
   }
 }

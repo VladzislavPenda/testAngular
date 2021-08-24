@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 
 @Component({
@@ -9,12 +8,4 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ScoreCounterService]
 })
-export class GameComponent{
-
-  constructor(private router: Router) {
-  }
-
-  newGame(){
-    this.router.navigate(['/']);
-  }
-}
+export class GameComponent { }

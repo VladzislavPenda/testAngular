@@ -17,8 +17,7 @@ export class AddNewPlayerComponent{
   });
 
   addPlayer(): void {
-    if(this.form.status != "INVALID")
-    {
+    if(this.form.status != "INVALID") {
       this.playerService.addPlayer(this.form.value);
       this.router.navigate(['']);
     }

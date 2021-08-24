@@ -1,11 +1,11 @@
-:host{
+:host {
   width: 500px;
   display: block;
   margin: auto;
   padding-top: 10em;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -39,7 +39,7 @@ body {
   z-index: 2;
 }
 
-.fa-search{
+.fa-search {
   color: grey;
 }
 
@@ -47,11 +47,11 @@ body {
   color: black;
 }
 
-.text ::placeholder{
+.text ::placeholder {
   font-family: Arial, sans-serif;
 }
 
-.header-label{
+.header-label {
   color: white;
   font-family: Arial, sans-serif;
 }
@@ -63,13 +63,13 @@ body {
   background-color: #039be6 ;
 }
 
-.search-input{
+.search-input {
   border: none;
   border:solid 1px #ccc;
   border-radius: 5px;
 }
 
-.create-player-button-container{
+.create-player-button-container {
   width: 50%;
   margin-left: 5px;
 }
@@ -80,7 +80,7 @@ body {
   border-bottom: 1px solid #039be6;
 }
 
-.create-player{
+.create-player {
   height: 100%;
   width: 100%;
 }
@@ -91,29 +91,33 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.player-name{
+.player-name {
   flex-grow: 2;
 }
 
-.player-mail{
+.player-mail {
   flex-grow: 2;
 }
 
-.delete-icon-container{
+.delete-icon-container {
   width: 50px;
   height: 50px;
 }
 
-.delete-image{
+.delete-image {
   width: 100%;
   height: 100%;
 }
 
-.delete-icon-container{
+.delete-icon-container {
   padding: 15px;
 }
 
-.start-button{
+.fas {
+  color: grey;
+}
+
+.start-button {
   background-color: #37bf97;
   padding: 10px;
   width: 100%;
@@ -125,7 +129,8 @@ body {
   cursor: pointer;
 }
 
-::placeholder{
+::placeholder {
   font-size: 15px;
   font-weight:normal;
 }
+

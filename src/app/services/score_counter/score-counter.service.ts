@@ -7,10 +7,14 @@ import { GameUnit } from 'src/app/common/gameUnit';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
+const MAX_GAME_MOVES_NUMBER = 20;
+const START_POINTS = 501;
+
 @Injectable({
   providedIn: 'root'
 })
-export class ScoreCounterService{
+
+export class ScoreCounterService {
 
   private move: number = 0;
   private winnerId?: number;
@@ -20,31 +24,30 @@ export class ScoreCounterService{
 
   constructor(private playerService: PlayersService, private route: ActivatedRoute, private router: Router) {
     this.selectedGame = this.route.snapshot.paramMap.get('id');
-    if(this.selectedGame === '301'){
+    if(this.selectedGame === '301') {
       this.router.navigate(['/error']);
     }
     this.initGame();
   }
 
-  getMovesNumber(): number{
+  public getMovesNumber(): number {
     return this.move;
   }
 
-  getWinnerId(): number | undefined{
+  public getWinnerId(): number | undefined {
     return this.winnerId;
   }
 
-  count(data: gameForm): void{
+  public count(data: gameForm): void {
     let playersMoveData: Players = {players: []};
     let recievedPoints = 0;
     let points = 0;
-    for(let i = 0; i < data.playingUnits.length; i++)
-    {
+    for(let i = 0; i < data.playingUnits.length; i++) {
       let lastMultiplierValue = 1;
       let previosPoints = this.subject.value.moves[0].players[i].points;
       [recievedPoints, lastMultiplierValue] = this.getRecievedPointsWithLastMultiplier(data.playingUnits[i].throwings, i, recievedPoints, lastMultiplierValue);
       points = this.countTotalPoints(previosPoints, recievedPoints);
-      if (points == 0 && lastMultiplierValue == 2){
+      if (points == 0 && lastMultiplierValue == 2) {
         this.winnerId = i; // implement winning panel later
       }
 
@@ -53,8 +56,7 @@ export class ScoreCounterService{
     }
 
     this.move += 1;
-    if (this.move == 20)
-    {
+    if (this.move == MAX_GAME_MOVES_NUMBER) {
       this.findWinner(playersMoveData.players);
     }
 
@@ -62,12 +64,12 @@ export class ScoreCounterService{
     this.loadHistory(this.subject.value);
   }
 
-  initGame(){
+  private initGame() {
     this.selectedGame = this.route.snapshot.paramMap.get('id');
     let gameHistory: GameHistory = {gameName: '', moves: []};
     let playersMoveData: Players = {players: []};
-    this.playerService.players.forEach(element => {
-      playersMoveData.players.push({person: element.name, points: 501});
+    this.playerService.takePlayers().forEach(element => {
+      playersMoveData.players.push({person: element.name, points: START_POINTS});
     });
 
     gameHistory.gameName = this.selectedGame;
@@ -75,26 +77,25 @@ export class ScoreCounterService{
     this.loadHistory(gameHistory);
   }
 
-  countTotalPoints(previosPoints: number, recievedPoints: number): number{
+  private countTotalPoints(previosPoints: number, recievedPoints: number): number {
     let points: number;
-    if(this.move == 0){
-      points = 501 - recievedPoints;
+    if(this.move == 0) {
+      points = START_POINTS - recievedPoints;
     }
-    else if (previosPoints < recievedPoints || previosPoints - recievedPoints == 1){
+    else if (previosPoints < recievedPoints || previosPoints - recievedPoints == 1) {
       points = previosPoints;
     }
-    else{
+    else {
       points = previosPoints - recievedPoints;
     }
 
     return points;
   }
 
-  getRecievedPointsWithLastMultiplier(data: Throwings[], i: number, recievedPoints: number, lastMultiplierValue: number) {
+  private getRecievedPointsWithLastMultiplier(data: Throwings[], i: number, recievedPoints: number, lastMultiplierValue: number) {
     data.forEach(throwing =>{
       recievedPoints += throwing.multiplier * throwing.points;
-      if(throwing.points != 0 && throwing.points != null)
-      {
+      if(throwing.points != 0 && throwing.points != null) {
         lastMultiplierValue = throwing.multiplier;
       }
 
@@ -102,12 +103,11 @@ export class ScoreCounterService{
     return [recievedPoints, lastMultiplierValue]
   }
 
-  findWinner(players: GameUnit[]){
+  private findWinner(players: GameUnit[]) {
     let min = players[0].points;
     let winnerId = 0;
-    for(let i = 1; i < players.length; i++)
-    {
-      if (players[i].points < min){
+    for(let i = 1; i < players.length; i++) {
+      if (players[i].points < min) {
         min = players[i].points;
         winnerId = i;
       }
@@ -116,7 +116,11 @@ export class ScoreCounterService{
     this.winnerId = winnerId;
   }
 
-  loadHistory(history: GameHistory){
+  private loadHistory(history: GameHistory) {
     this.subject.next(history);
+  }
+
+  public check(): boolean {
+    return this.winnerId == undefined && this.move != MAX_GAME_MOVES_NUMBER ? true : false;
   }
 }

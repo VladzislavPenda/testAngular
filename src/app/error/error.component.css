@@ -1,4 +1,4 @@
-:host{
+:host {
   display: block;
   width: 50%;
   margin: auto;
@@ -6,7 +6,7 @@
   padding-top: 20em;
 }
 
-.app-button{
+.app-button {
   width: 50%;
   height: 35px;
 }

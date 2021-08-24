@@ -1,25 +1,25 @@
-:host{
+:host {
   display: block;
   width: 300px;
   margin: auto;
   padding-top: 10em;
 }
 
-.logo{
+.logo {
   width: 50%;
   margin: auto;
 }
 
-.header-text{
+.header-text {
   width: 80%;
   margin: auto;
 }
 
-.input-container{
+.input-container {
   margin: 35px 0px;
 }
 
-.input-values{
+.input-values {
   border: none;
   border-radius: 5px;
   width: 287px;
@@ -30,7 +30,7 @@
   margin-top: 5px;
 }
 
-.add-button-container{
+.add-button-container {
   margin-top: 60px;
   height: 35px;
 }

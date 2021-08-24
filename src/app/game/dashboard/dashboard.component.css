@@ -1,36 +1,36 @@
-:host{
+:host {
   display: flex;
   padding-top: 2em;
   border-top: solid 1px lightskyblue;
 }
 
-.move-counter-container{
+.move-counter-container {
   width: 10%;
   padding-top: 28.4px;
 }
 
-.move-number{
+.move-number {
   text-align: center;
   height: 24px;
   padding-top: 5px;
 }
 
-.players-name-container{
+.players-name-container {
     display: flex;
     justify-content: space-around;
 }
 
-.name-container{
+.name-container {
   width:170px;
   text-align: center;
   padding-bottom: 10px;
 }
 
-.dashboard-info-container{
+.dashboard-info-container {
   width: 80%;
 }
 
-.one-move-row-container{
+.one-move-row-container {
   padding: 5px 0;
   display: flex;
   background-color: seashell;

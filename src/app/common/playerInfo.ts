@@ -1,4 +1,4 @@
-export interface PlayerInfo{
-    name: string,
-    mail: string
+export interface PlayerInfo {
+    name: string;
+    mail: string;
 }

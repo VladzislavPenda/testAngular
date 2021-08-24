@@ -1,4 +1,4 @@
-export interface GameUnit{
-    person: string,
-    points: number
+export interface GameUnit {
+  person: string;
+  points: number;
 }

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
+
+const MAX_DART_POINT_VALUE = 20;
 
 @Component({
   selector: 'app-points-custom-input',
@@ -19,7 +21,7 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
     }
   ]
 })
-export class PointsCustomInputComponent implements OnInit, ControlValueAccessor, Validators, OnDestroy {
+export class PointsCustomInputComponent implements ControlValueAccessor, Validators {
   private _value: any;
 
   get value() {
@@ -31,46 +33,30 @@ export class PointsCustomInputComponent implements OnInit, ControlValueAccessor,
   this.onChange(this._value);
   }
 
-  onChange(_: any) {}
+  private onChange(_: any) {}
   onValidationChange: any = () => {};
 
-  constructor() { }
-
-  up() {
-    this.value++;
-  }
-
-  down() {
-    this.value--;
-  }
-
-  writeValue(value: any) {
+  public writeValue(value: any) {
     this.value = value;
   }
 
-  registerOnChange(fn: any) {
+  public registerOnChange(fn: any) {
     this.onChange = fn;
   }
 
-  registerOnTouched() {
+  public registerOnTouched() {
   }
 
   // ValidationErrors | null не работает вместо any
-  validate(control: AbstractControl): any {
+  private validate(control: AbstractControl): any {
     const counter = control.value;
-      if (counter < 0 || counter > 20){
+      if (counter < 0 || counter > MAX_DART_POINT_VALUE){
         control.setErrors({ outOfRange : true})
         return control
       }
   }
 
-  registerOnValidatorChange?(fn: () => void): void {
+  private registerOnValidatorChange?(fn: () => void): void {
     this.onValidationChange = fn;
-  }
-
-  ngOnInit(): void {
-  }
-
-  ngOnDestroy(){
   }
 }

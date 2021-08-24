@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PlayerInfo } from 'src/app/common/playerInfo';
 import { PlayersService } from 'src/app/services/players/players.service';
@@ -9,7 +9,7 @@ import { PlayersService } from 'src/app/services/players/players.service';
   styleUrls: ['./lobby.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LobbyComponent implements OnInit, OnDestroy {
+export class LobbyComponent implements OnInit {
   public players: PlayerInfo[] = [];
   public selectedGame?: string;
   public tryStartGameWithErrors: boolean = false;
@@ -17,30 +17,27 @@ export class LobbyComponent implements OnInit, OnDestroy {
   constructor(private playerService: PlayersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.players = this.playerService.players;
+    this.players = this.playerService.takePlayers();
   }
 
-  goToCreatingPlayer(): void{
+  public goToCreatingPlayer(): void {
     this.router.navigate(['/create']);
   }
 
-  deletePlayer(index: number): void{
+  public deletePlayer(index: number): void {
     this.playerService.removePlayer(index);
   }
 
-  startGame(): void{
-    if(this.selectedGame != null){
+  public startGame(): void {
+    if(this.selectedGame != null) {
       this.router.navigate([`/game/${this.selectedGame}`]);
     }
-    else{
+    else {
       this.tryStartGameWithErrors = true
     }
   }
 
-  addSelectedGame(gameName: string){
+  public addSelectedGame(gameName: string) {
     this.selectedGame = gameName;
-  }
-
-  ngOnDestroy(){
   }
 }

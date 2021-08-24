@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LobbyComponent } from './main_window/lobby/lobby.component';
@@ -11,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameComponent } from './game/game/game.component';
 import { ThrowingDartsComponent } from './game/throwing-darts/throwing-darts.component';
 import { DashboardComponent } from './game/dashboard/dashboard.component';
-
 import { PointsCustomInputComponent } from './game/points-custom-input/points-custom-input.component';
 import { ErrorComponent } from './error/error.component';
 
