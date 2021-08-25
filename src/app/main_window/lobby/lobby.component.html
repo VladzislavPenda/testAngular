@@ -1,23 +1,15 @@
 <p class="text">Select players</p>
 <div class="lobby-header-buttons">
   <div class="form-group fg--search">
-      <input type="text" placeholder="Search" class="search-input">
-      <button type="submit"><i class="fa fa-search"></i></button>
+    <input type="text" placeholder="Search" class="search-input">
+    <button type="submit"><i class="fa fa-search"></i></button>
   </div>
-  <div class="create-player-button-container">
-      <button class="app-button button-text" (click)="goToCreatingPlayer()">New player</button>
-  </div>
+  <button class="app-button button-text" (click)="goToCreatingPlayer()">New player</button>
 </div>
 <div *ngFor="let player of players; index as i" class="player-unit">
-  <div class="item player-name">
-      <p>{{player.name}}</p>
-  </div>
-  <div class="item player-mail">
-      <p>{{player.mail}}</p>
-  </div>
-  <div class="delete-icon-container">
-      <i class="fas fa-times" (click)="deletePlayer(i)"></i>
-  </div>
+  <p class="item">{{player.name}}</p>
+  <p class="item">{{player.mail}}</p>
+  <i class="fas fa-times delete-icon-container" (click)="deletePlayer(i)"></i>
 </div>
 <app-choose-game (selectedGameEvent)="addSelectedGame($event)"></app-choose-game>
 <span *ngIf="tryStartGameWithErrors===true" class="error-message">Plese, choose game.</span>
