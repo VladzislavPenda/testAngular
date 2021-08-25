@@ -8,7 +8,7 @@
   <div class="move-number text">
     <span *ngIf="i + 1 != (gameHistory | async)?.moves?.length">{{moveNumber - i}}</span>
   </div>
-  <div *ngFor="let unit of moves.players" class="points-container">{{unit.points}}</div>
+  <div *ngFor="let unit of moves.players" class="points-container">{{unit.points | points}}</div>
 </div>
 
 
