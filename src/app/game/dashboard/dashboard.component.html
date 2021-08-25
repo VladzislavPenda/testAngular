@@ -1,26 +1,15 @@
-<div class="move-counter-container">
-  <div *ngFor="let item of (gameHistory |async)?.moves; index as i">
-    <div class="move-number">
-      <span *ngIf="i + 1 != (gameHistory |async)?.moves?.length" class="text">
-        {{moveNumber - i}}
-      </span>
-    </div>
+<div class="players-name-container">
+  <div *ngFor="let item of getPlayers(); index as i" class="name-container text">
+    <span>{{item.name}}</span>
+    <ng-container *ngIf="WinnerId == i">+</ng-container>
   </div>
 </div>
-<div class="dashboard-info-container">
-  <div class="players-name-container">
-    <div *ngFor="let item of getPlayers(); index as i" >
-      <div class="name-container text">
-        <span>{{item.name}}</span>
-        <ng-container *ngIf="WinnerId == i">+</ng-container>
-      </div>
-    </div>
+<div *ngFor="let moves of (gameHistory | async)?.moves; index as i" class="one-move-row-container">
+  <div class="move-number text">
+    <span *ngIf="i + 1 != (gameHistory | async)?.moves?.length">{{moveNumber - i}}</span>
   </div>
-  <div *ngFor="let moves of (gameHistory | async)?.moves; index as i" class="">
-    <div class="one-move-row-container">
-      <div *ngFor="let unit of moves.players">
-        {{unit.points}}
-      </div>
-    </div>
-  </div>
+  <div *ngFor="let unit of moves.players" class="points-container">{{unit.points}}</div>
 </div>
+
+
+

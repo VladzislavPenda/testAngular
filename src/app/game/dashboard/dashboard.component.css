@@ -1,23 +1,13 @@
 :host {
-  display: flex;
+  display: block;
   padding-top: 2em;
   border-top: solid 1px lightskyblue;
+  width:90%;
 }
 
 .move-counter-container {
   width: 10%;
   padding-top: 28.4px;
-}
-
-.move-number {
-  text-align: center;
-  height: 24px;
-  padding-top: 5px;
-}
-
-.players-name-container {
-    display: flex;
-    justify-content: space-around;
 }
 
 .name-container {
@@ -26,14 +16,31 @@
   padding-bottom: 10px;
 }
 
-.dashboard-info-container {
-  width: 80%;
-}
-
 .one-move-row-container {
-  padding: 5px 0;
   display: flex;
   background-color: seashell;
   justify-content: space-around;
   border-bottom: 1px solid #039be6;
+}
+
+.move-number {
+  padding: 5px 0;
+  width: 10%;
+  text-align: center;
+}
+
+.one-move-row-container :first-child {
+  background-color: #039be6;
+}
+
+.points-container {
+  text-align: center;
+  padding: 5px 0;
+  flex-grow: 1;
+}
+
+.players-name-container {
+  display: flex;
+  padding-left: 6em;
+  justify-content: space-around;
 }
