@@ -12,12 +12,12 @@ import { ScoreCounterService } from 'src/app/services/score_counter/score-counte
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
-  public gameHistory?: Observable<GameHistory>;
+  public gameHistory?: Observable<GameHistory["moves"]>;
 
   constructor(private counterService: ScoreCounterService, private playersService: PlayersService) {}
 
   ngOnInit(): void {
-    this.gameHistory = this.counterService.gameHistory;
+    this.gameHistory = this.counterService.getGameHistoryMoves();
   }
 
   public getPlayers(): PlayerInfo[]{

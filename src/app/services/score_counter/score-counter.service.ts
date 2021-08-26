@@ -6,6 +6,7 @@ import { Players } from 'src/app/common/players';
 import { GameUnit } from 'src/app/common/gameUnit';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 const MAX_GAME_MOVES_NUMBER = 20;
 const START_POINTS = 501;
@@ -36,6 +37,12 @@ export class ScoreCounterService {
 
   public getWinnerId(): number | undefined {
     return this.winnerId;
+  }
+
+  public getGameHistoryMoves(): Observable<GameHistory["moves"]> {
+    return this.gameHistory.pipe(map((data: any)=> {
+      return data["moves"];
+    }));
   }
 
   public count(data: gameForm): void {
