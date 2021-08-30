@@ -34,7 +34,7 @@
   </div>
   <div class="add-button-container">
     <button type="submit" class="app-button add-button">Add</button>
-    <span *ngIf="submitted && form.status=='INVALID'" class="error-message">Plese enter the data correctly(points cannot be less than 0 and more than 20)</span>
+    <span *ngIf="!form.valid" class="error-message">Plese enter the data correctly(points cannot be less than 0 and more than 20)</span>
   </div>
 </form>
 

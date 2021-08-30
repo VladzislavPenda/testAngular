@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewContainerRef} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { PlayerInfo } from 'src/app/common/playerInfo';
 import { Throwings } from 'src/app/common/gameForm';
+import { ModalService } from 'src/app/services/modal/modal.service';
 
 @Component({
   selector: 'app-throwing-darts',
@@ -17,7 +18,8 @@ export class ThrowingDartsComponent implements OnInit {
   public submitted = false;
   public throwingArrayInit: Throwings[];
 
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService) {
+  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService, viewContainerRef: ViewContainerRef, private modalService: ModalService) {
+    this.modalService.viewContainerRef = viewContainerRef;
     this.throwingArrayInit = this.initializeArray();
     this.form = this.fb.group({
       playingUnits: this.fb.array([])
@@ -43,8 +45,12 @@ export class ThrowingDartsComponent implements OnInit {
 
   public count() {
     this.submitted = true;
-    if(this.form.status != "INVALID" && this.counterService.check()) {
+    if(this.form.valid && this.counterService.check()) {
       this.counterService.count(this.form.value);
+      let winnerName = this.counterService.getWinnerName()
+      if(winnerName != undefined) {
+        this.modalService.loadComponent(winnerName);
+      }
     }
   }
 

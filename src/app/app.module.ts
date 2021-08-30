@@ -13,6 +13,7 @@ import { DashboardComponent } from './game/dashboard/dashboard.component';
 import { PointsCustomInputComponent } from './game/points-custom-input/points-custom-input.component';
 import { ErrorComponent } from './error/error.component';
 import { FormatPipe } from './pipes/format.pipe';
+import { WinModalComponent } from './game/win-modal/win-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormatPipe } from './pipes/format.pipe';
     DashboardComponent,
     PointsCustomInputComponent,
     ErrorComponent,
-    FormatPipe
+    FormatPipe,
+    WinModalComponent
   ],
   imports: [
     BrowserModule,

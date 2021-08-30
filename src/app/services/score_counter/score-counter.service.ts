@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 
 const MAX_GAME_MOVES_NUMBER = 20;
 const START_POINTS = 501;
+const LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN = 2
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ScoreCounterService {
 
   private move: number = 0;
   private winnerId?: number;
+  private winnerName?: string;
   private selectedGame: string | null;
   private subject = new BehaviorSubject<GameHistory>({gameName: '', moves: []});
   public gameHistory: Observable<GameHistory> = this.subject.asObservable();
@@ -39,6 +41,9 @@ export class ScoreCounterService {
     return this.winnerId;
   }
 
+  public getWinnerName(): string | undefined {
+    return this.winnerName;
+  }
   public getGameHistoryMoves(): Observable<GameHistory["moves"]> {
     return this.gameHistory.pipe(map((data: any)=> {
       return data["moves"];
@@ -48,14 +53,16 @@ export class ScoreCounterService {
   public count(data: gameForm): void {
     let playersMoveData: Players = {players: []};
     let recievedPoints = 0;
+    // let winnerName: string;
     let points = 0;
     for(let i = 0; i < data.playingUnits.length; i++) {
       let lastMultiplierValue = 1;
       let previosPoints = this.subject.value.moves[0].players[i].points;
       [recievedPoints, lastMultiplierValue] = this.getRecievedPointsWithLastMultiplier(data.playingUnits[i].throwings, i, recievedPoints, lastMultiplierValue);
       points = this.countTotalPoints(previosPoints, recievedPoints);
-      if (points == 0 && lastMultiplierValue == 2) {
-        this.winnerId = i; // implement winning panel later
+      if (points == 0 && lastMultiplierValue == LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN) {
+        this.winnerId = i;
+        this.winnerName = data.playingUnits[i].name;
       }
 
       playersMoveData.players.push({person: data.playingUnits[i].name, points: points});
@@ -113,13 +120,16 @@ export class ScoreCounterService {
   private findWinner(players: GameUnit[]) {
     let min = players[0].points;
     let winnerId = 0;
+    let winnerName = players[0].person;
     for(let i = 1; i < players.length; i++) {
       if (players[i].points < min) {
         min = players[i].points;
         winnerId = i;
+        winnerName = players[i].person;
       }
     }
 
+    this.winnerName = winnerName;
     this.winnerId = winnerId;
   }
 
