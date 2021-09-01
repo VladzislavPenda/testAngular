@@ -12,10 +12,12 @@ const MAX_GAME_MOVES_NUMBER = 20;
 const START_POINTS = 501;
 const LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN = 2
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
+
+@Injectable()
 export class ScoreCounterService {
 
   private move: number = 0;

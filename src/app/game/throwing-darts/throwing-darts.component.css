@@ -27,8 +27,9 @@
 
 .input-score {
   width: 60px;
-  height: 32.5px;
+  height: 38.5px;
   margin-top: 20px;
+  padding-left: 5px;
 }
 
 .input-radiobuttons-container {
@@ -36,7 +37,7 @@
 }
 
 .form_radio_group {
-  padding-top: 20px;
+  padding: 20px 0 0 5px;
   display: flex;
   overflow: hidden;
 }
@@ -120,4 +121,13 @@
 
 .add-button-container {
   text-align: center;
+  padding-top: 10px;
+}
+
+.input-score.ng-invalid{
+  background-color: red;
+}
+
+.input-score.ng-valid{
+  background-color: green;
 }
