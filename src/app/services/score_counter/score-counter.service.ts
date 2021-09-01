@@ -12,10 +12,7 @@ const MAX_GAME_MOVES_NUMBER = 20;
 const START_POINTS = 501;
 const LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN = 2
 
-@Injectable({
-  providedIn: 'root'
-})
-
+@Injectable()
 export class ScoreCounterService {
 
   private move: number = 0;
@@ -59,7 +56,7 @@ export class ScoreCounterService {
       let lastMultiplierValue = 1;
       let previosPoints = this.subject.value.moves[0].players[i].points;
       [recievedPoints, lastMultiplierValue] = this.getRecievedPointsWithLastMultiplier(data.playingUnits[i].throwings, i, recievedPoints, lastMultiplierValue);
-      points = this.countTotalPoints(previosPoints, recievedPoints);
+      points = this.countTotalPoints(previosPoints, recievedPoints, lastMultiplierValue);
       if (points == 0 && lastMultiplierValue == LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN) {
         this.winnerId = i;
         this.winnerName = data.playingUnits[i].name;
@@ -91,12 +88,12 @@ export class ScoreCounterService {
     this.loadHistory(gameHistory);
   }
 
-  private countTotalPoints(previosPoints: number, recievedPoints: number): number {
+  private countTotalPoints(previosPoints: number, recievedPoints: number, lastMultiplier: number): number {
     let points: number;
     if(this.move == 0) {
       points = START_POINTS - recievedPoints;
     }
-    else if (previosPoints < recievedPoints || previosPoints - recievedPoints == 1) {
+    else if (previosPoints < recievedPoints || previosPoints - recievedPoints == 1 || (lastMultiplier != LAST_MULTIPLIER_NUMBER_NEEDED_TO_WIN && previosPoints - recievedPoints == 0)) {
       points = previosPoints;
     }
     else {

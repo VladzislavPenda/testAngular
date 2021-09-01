@@ -10,28 +10,20 @@ import { FormBuilder, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PlayersService]
 })
-export class AddNewPlayerComponent implements OnInit{
+export class AddNewPlayerComponent {
+  public submitted: boolean = false;
   constructor(private playerService: PlayersService, private router: Router, private fb: FormBuilder) { }
 
   public form = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+    name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     mail: ['', [Validators.required, Validators.email]]
   });
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    console.log(this.form);
-    console.log("init add component.");
-  }
-
-
   addPlayer(): void {
+    this.submitted = true;
     if(this.form.valid) {
       this.playerService.addPlayer(this.form.value);
       this.router.navigate(['']);
     }
-
-    console.log(this.form);
   }
 }

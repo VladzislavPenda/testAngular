@@ -17,11 +17,13 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   public submitted = false;
   public throwingArrayInit: Throwings[];
-  // public viewContainerRef: ViewContainerRef
 
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService, private viewContainerRef: ViewContainerRef, private modalService: ModalService) {
-    let obj = {};
-    // this.viewContainerRef = viewContainerRef;
+  constructor(
+    private fb: FormBuilder,
+    private counterService: ScoreCounterService,
+    private playersService: PlayersService,
+    private viewContainerRef: ViewContainerRef,
+    private modalService: ModalService) {
     this.throwingArrayInit = this.initializeArray();
     this.form = this.fb.group({
       playingUnits: this.fb.array([])
@@ -66,6 +68,5 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.viewContainerRef.clear();
-    console.log("%c throwing darts cmp destroyed.", "color: green");
   }
 }

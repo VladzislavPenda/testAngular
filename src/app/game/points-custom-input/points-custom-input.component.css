@@ -1,5 +1,9 @@
 .input-score {
   width: 60px;
   height: 32.5px;
-  margin-top: 20px;
+  outline:none;
+}
+
+.input-score.ng-invalid{
+  background-color: red;
 }

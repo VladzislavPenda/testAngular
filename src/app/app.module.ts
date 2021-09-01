@@ -14,6 +14,7 @@ import { PointsCustomInputComponent } from './game/points-custom-input/points-cu
 import { ErrorComponent } from './error/error.component';
 import { FormatPipe } from './pipes/format.pipe';
 import { WinModalComponent } from './game/win-modal/win-modal.component';
+import { PlayersService } from './services/players/players.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { WinModalComponent } from './game/win-modal/win-modal.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PlayersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,10 +22,13 @@ const MAX_DART_POINT_VALUE = 20;
   ]
 })
 export class PointsCustomInputComponent implements ControlValueAccessor, Validators {
-  private _value: any;
+  private _value?: number;
+  public control?: AbstractControl;
 
   get value() {
-  return this._value;
+    if (this._value == 0)
+      return undefined
+    return this._value;
   }
 
   @Input() set value(val) {
@@ -52,6 +55,7 @@ export class PointsCustomInputComponent implements ControlValueAccessor, Validat
     const counter = control.value;
       if (counter < 0 || counter > MAX_DART_POINT_VALUE){
         control.setErrors({ outOfRange : true})
+        this.control = control;
         return control
       }
   }

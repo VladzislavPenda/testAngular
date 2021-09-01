@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { PLAYERS } from 'src/app/common/mock-players';
 import { PlayerInfo } from 'src/app/common/playerInfo';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PlayersService {
 
   private players: PlayerInfo[] = [];

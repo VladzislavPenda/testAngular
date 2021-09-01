@@ -7,6 +7,14 @@
     cursor: pointer;
 }
 
+.app-button:hover {
+  border: #dfba14 3px solid;
+}
+
+.app-button:active{
+  background-color:#dfba14;
+}
+
 .text {
     color: white;
     font-family: Arial, sans-serif;

@@ -10,9 +10,7 @@
         <span class="text">{{item.name}}</span>
         <div formArrayName="throwings">
           <div class="input-radiobuttons-container" *ngFor="let item2 of getArr(j); let i=index" [formGroupName]="i">
-            <div>
-               <app-points-custom-input type="number" class="input-score" formControlName="points"></app-points-custom-input>
-            </div>
+            <app-points-custom-input type="number" class="input-score" formControlName="points"></app-points-custom-input>
             <div class="form_radio_group">
               <div class="form_radio_group-item">
                 <input id="radio1_{{i}}{{item.name}}" type="radio" [value]="1" formControlName="multiplier" checked>
