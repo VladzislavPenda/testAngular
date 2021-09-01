@@ -11,10 +11,11 @@ import { FormBuilder, Validators } from '@angular/forms';
   providers: [PlayersService]
 })
 export class AddNewPlayerComponent implements OnInit{
+  public submitted: boolean = false;
   constructor(private playerService: PlayersService, private router: Router, private fb: FormBuilder) { }
 
   public form = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+    name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     mail: ['', [Validators.required, Validators.email]]
   });
 
@@ -25,6 +26,7 @@ export class AddNewPlayerComponent implements OnInit{
 
 
   addPlayer(): void {
+    this.submitted = true;
     if(this.form.valid) {
       this.playerService.addPlayer(this.form.value);
       this.router.navigate(['']);

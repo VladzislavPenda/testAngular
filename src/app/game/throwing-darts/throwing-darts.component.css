@@ -131,3 +131,10 @@
 .input-score.ng-valid{
   background-color: green;
 }
+
+
+.add-button:hover ~ span{
+  /* color: white; */
+  font-size: 20px;
+}
+

@@ -1,6 +1,7 @@
 .input-score {
   width: 60px;
   height: 32.5px;
+  outline:none;
 }
 
 .input-score.ng-invalid{
