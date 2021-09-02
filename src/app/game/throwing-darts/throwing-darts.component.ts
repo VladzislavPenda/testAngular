@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewContainerRef} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import { ScoreCounterService } from 'src/app/services/score_counter/score-counter.service';
 import { PlayersService } from 'src/app/services/players/players.service';
@@ -13,13 +13,17 @@ import { ModalService } from 'src/app/services/modal/modal.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class ThrowingDartsComponent implements OnInit {
+export class ThrowingDartsComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   public submitted = false;
   public throwingArrayInit: Throwings[];
 
-  constructor(private fb: FormBuilder, private counterService: ScoreCounterService, private playersService: PlayersService, viewContainerRef: ViewContainerRef, private modalService: ModalService) {
-    this.modalService.viewContainerRef = viewContainerRef;
+  constructor(
+    private fb: FormBuilder,
+    private counterService: ScoreCounterService,
+    private playersService: PlayersService,
+    private viewContainerRef: ViewContainerRef,
+    private modalService: ModalService) {
     this.throwingArrayInit = this.initializeArray();
     this.form = this.fb.group({
       playingUnits: this.fb.array([])
@@ -49,7 +53,7 @@ export class ThrowingDartsComponent implements OnInit {
       this.counterService.count(this.form.value);
       let winnerName = this.counterService.getWinnerName()
       if(winnerName != undefined) {
-        this.modalService.loadComponent(winnerName);
+        this.modalService.loadComponent(winnerName, this.viewContainerRef);
       }
     }
   }
@@ -60,5 +64,9 @@ export class ThrowingDartsComponent implements OnInit {
 
   private get playingUnits() {
     return this.form.get('playingUnits') as FormArray;
+  }
+
+  ngOnDestroy() {
+    this.viewContainerRef.clear();
   }
 }

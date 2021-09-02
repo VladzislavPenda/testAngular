@@ -1,9 +1,10 @@
 :host {
   display: block;
   position: absolute;
-  margin: 7em 15em;
+  margin: -250px 15em;
   background-color: rgb(42, 123, 150);
   width: 500px;
+  height: 200px;
   border-radius: 15px;
 }
 
@@ -12,10 +13,23 @@
   top: -15px;
   right: -13px;
   font-size: 18px;
-  color: #d74840;
-  background-color: #ebe084;
+  color: #5f4e4d;
+  background-color: #fbd426;
   padding: 8px 10px;
   border-radius: 30px;
+}
+
+.modal--close-btn:hover {
+  padding: 12px 15px;
+  padding: 10px 12px;
+  top: -17px;
+  right: -15px;
+  cursor: pointer;
+  border: #dfba14 1px solid;
+}
+
+.modal--close-btn:active {
+  background-color:#dfba14;
 }
 
 .text {
@@ -30,5 +44,6 @@
 
 .app-button {
   width: 40%;
+  height: 30px;
 }
 

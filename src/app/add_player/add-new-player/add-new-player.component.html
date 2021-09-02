@@ -5,18 +5,18 @@
   <p class="text header-text">Add a new player to start a game</p>
   <div class="input-container">
       <span class="text">Nickname</span>
-      <div [hidden]="form.controls.name.untouched">
-        <span *ngIf="this.form.controls.name.errors?.required" class="error-message">This field is required.</span>
-        <span *ngIf="this.form.controls.name.errors?.minlength" class="error-message">Length must be at least 6.</span>
-        <span *ngIf="this.form.controls.name.errors?.maxlength" class="error-message">Length must be less than 15.</span>
+      <div [hidden]="form.controls.name.untouched && !submitted">
+        <span *ngIf="this.form.controls.name.errors?.required" class="error-message">*This field is required.</span>
+        <span *ngIf="this.form.controls.name.errors?.minlength" class="error-message">*Length must be at least 4.</span>
+        <span *ngIf="this.form.controls.name.errors?.maxlength" class="error-message">*Length must be less than 15.</span>
       </div>
       <input type="text" class="input-values" name="name" formControlName="name">
   </div>
   <div class="input-container">
       <span class="text">E-mail</span>
-      <div [hidden]="form.controls.mail.untouched">
-        <span *ngIf="this.form.controls.mail.errors?.required" class="error-message">This field is required.</span>
-        <span *ngIf="this.form.controls.mail.errors?.email" class="error-message">This field is incorrect.</span>
+      <div [hidden]="form.controls.mail.untouched && !submitted">
+        <span *ngIf="this.form.controls.mail.errors?.required" class="error-message">*This field is required.</span>
+        <span *ngIf="this.form.controls.mail.errors?.email" class="error-message">*This field is incorrect.</span>
       </div>
       <input type="text" class="input-values" formControlName="mail">
   </div>
