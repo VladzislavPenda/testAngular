@@ -5,20 +5,11 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
   templateUrl: './win-modal.component.html',
   styleUrls: ['./win-modal.component.css']
 })
-export class WinModalComponent implements OnInit, OnDestroy {
+export class WinModalComponent {
   @Input() data: any;
   @Output() closeModal: EventEmitter<any> = new EventEmitter<any>();
-  constructor() { }
-
-  ngOnInit(): void {
-    console.log("winModal init.");
-  }
 
   public close(event: any) {
     this.closeModal.emit(event);
-  }
-
-  ngOnDestroy() {
-    console.log("WinModal cmp destroyed.");
   }
 }

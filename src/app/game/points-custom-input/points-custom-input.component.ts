@@ -55,9 +55,7 @@ export class PointsCustomInputComponent implements ControlValueAccessor, Validat
     const counter = control.value;
       if (counter < 0 || counter > MAX_DART_POINT_VALUE){
         control.setErrors({ outOfRange : true})
-        console.log(control);
         this.control = control;
-        // this.registerOnValidatorChange(control)
         return control
       }
   }

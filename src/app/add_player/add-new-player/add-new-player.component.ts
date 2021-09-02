@@ -10,7 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PlayersService]
 })
-export class AddNewPlayerComponent implements OnInit{
+export class AddNewPlayerComponent {
   public submitted: boolean = false;
   constructor(private playerService: PlayersService, private router: Router, private fb: FormBuilder) { }
 
@@ -19,19 +19,11 @@ export class AddNewPlayerComponent implements OnInit{
     mail: ['', [Validators.required, Validators.email]]
   });
 
-  ngOnInit(): void {
-    console.log(this.form);
-    console.log("init add component.");
-  }
-
-
   addPlayer(): void {
     this.submitted = true;
     if(this.form.valid) {
       this.playerService.addPlayer(this.form.value);
       this.router.navigate(['']);
     }
-
-    console.log(this.form);
   }
 }

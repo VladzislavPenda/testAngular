@@ -49,7 +49,6 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
 
   public count() {
     this.submitted = true;
-    console.log(this.form);
     if(this.form.valid && this.counterService.check()) {
       this.counterService.count(this.form.value);
       let winnerName = this.counterService.getWinnerName()
@@ -69,6 +68,5 @@ export class ThrowingDartsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.viewContainerRef.clear();
-    console.log("%c throwing darts cmp destroyed.", "color: green");
   }
 }

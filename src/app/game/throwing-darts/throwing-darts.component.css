@@ -124,17 +124,16 @@
   padding-top: 10px;
 }
 
-.input-score.ng-invalid{
+.input-score.ng-invalid.ng-dirty{
   background-color: red;
 }
 
-.input-score.ng-valid{
+.input-score.ng-valid.ng-dirty{
   background-color: green;
 }
 
 
 .add-button:hover ~ span{
-  /* color: white; */
   font-size: 20px;
 }
 
